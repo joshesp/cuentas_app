@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:cuentas_app/config/theme/dark_theme.dart';
 import 'package:cuentas_app/config/theme/light_theme.dart';
-import 'package:flutter/material.dart';
+import 'package:cuentas_app/presentation/views/splashscreen/splascreen_view.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,11 +17,7 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       locale: const Locale('es', 'MX'),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: const SplashscreenView(),
     );
   }
 }
