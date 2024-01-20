@@ -18,3 +18,22 @@ const maxSpacing = 32.0;
 
 // Fonts
 const fontPrimary = 'Montserrat';
+
+// Slider intro text's
+const List<Map<String, String>> sliderIntro = [
+  {
+    "title": "Captura tu movimento",
+    "description": "Agrega tus ingreso y gastos de manera rápida y fácil.",
+    "image": "assets/images/slide-1.png"
+  },
+  {
+    "title": "Balance",
+    "description": "Observa y analiza el balance de tus ingresos diarios.",
+    "image": "assets/images/slide-2.png"
+  },
+  {
+    "title": "Cálculo de inpuestos",
+    "description": "Obtén tu reporte aproximado de tus impuestos mensuales",
+    "image": "assets/images/slide-3.png"
+  }
+];

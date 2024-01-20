@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cuentas_app/config/theme/dark_theme.dart';
 import 'package:cuentas_app/config/theme/light_theme.dart';
-import 'package:cuentas_app/presentation/views/splashscreen/splascreen_view.dart';
+import 'package:cuentas_app/presentation/views/slide_intro/slide_intro_view.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       locale: const Locale('es', 'MX'),
-      home: const SplashscreenView(),
+      home: const SlideIntroView(),
     );
   }
 }
