@@ -67,7 +67,7 @@ class TextStyleTheme {
   static const buttonMedium = TextStyle(
     fontSize: 14,
     fontFamily: fontPrimary,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     letterSpacing: 1.25,
   );
 
