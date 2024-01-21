@@ -4,12 +4,16 @@ import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
 
+import 'model/slide_model.dart';
+
 class SliderWidget extends StatefulWidget {
-  final List<Map<String, String>> sliderItems;
+  final List<SlideModel> sliderItems;
+  final void Function() onActionEnd;
 
   const SliderWidget({
     super.key,
     required this.sliderItems,
+    required this.onActionEnd,
   });
 
   @override
@@ -18,7 +22,7 @@ class SliderWidget extends StatefulWidget {
 
 class _SliderWidgetState extends State<SliderWidget> {
   final pageControl = PageController();
-  int currentIndexSlide = 1;
+  int currentIndexSlide = 0;
 
   @override
   void dispose() {
@@ -34,9 +38,7 @@ class _SliderWidgetState extends State<SliderWidget> {
         Align(
           alignment: Alignment.topRight,
           child: TextButton(
-            onPressed: () {
-              // TODO: Redirect to login
-            },
+            onPressed: widget.onActionEnd,
             child: Text(
               'Omitir'.toUpperCase(),
               style: TextStyleTheme.buttonMedium.copyWith(
@@ -66,6 +68,7 @@ class _SliderWidgetState extends State<SliderWidget> {
           totalBullets: widget.sliderItems.length,
           bulletActive: currentIndexSlide,
           onNextSlide: onNextSlide,
+          onActionEnd: widget.onActionEnd,
         )
       ],
     );
@@ -84,17 +87,17 @@ class _SlideContent extends StatelessWidget {
     required this.slide,
   });
 
-  final Map<String, String> slide;
+  final SlideModel slide;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: maxSpacing),
-        Image.asset(slide["image"]!),
+        Image.asset(slide.image),
         const SizedBox(height: 64),
         Text(
-          slide["title"]!,
+          slide.title,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Coolors.dark,
                 fontWeight: FontWeight.w600,
@@ -102,7 +105,7 @@ class _SlideContent extends StatelessWidget {
         ),
         const SizedBox(height: minSpacing),
         Text(
-          slide["description"]!,
+          slide.description,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Coolors.dark,
               ),
@@ -117,11 +120,13 @@ class _SliderNavigation extends StatelessWidget {
   final int totalBullets;
   final int bulletActive;
   final void Function() onNextSlide;
+  final void Function() onActionEnd;
 
   const _SliderNavigation({
     required this.totalBullets,
     required this.bulletActive,
     required this.onNextSlide,
+    required this.onActionEnd,
   });
 
   @override
@@ -130,14 +135,34 @@ class _SliderNavigation extends StatelessWidget {
       children: [
         Row(
           children: List.generate(totalBullets, (index) {
-            return _BulletSlideControl(active: index == bulletActive);
+            return _BulletSlideControl(
+              active: index == bulletActive,
+            );
           }),
         ),
         const Spacer(),
-        IconButton.filled(
-          onPressed: onNextSlide,
-          icon: const Icon(Icons.arrow_forward),
-          style: basePrimaryBtnStyle,
+        AnimatedCrossFade(
+          firstChild: IconButton.filled(
+            onPressed: onNextSlide,
+            icon: const Icon(Icons.arrow_forward),
+            style: basePrimaryBtnStyle,
+          ),
+          secondChild: ElevatedButton(
+            onPressed: onActionEnd,
+            style: basePrimaryBtnStyle,
+            child: Text(
+              'Empezar'.toUpperCase(),
+              style: TextStyleTheme.buttonMedium.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ),
+          crossFadeState: totalBullets - 1 == bulletActive
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
+          duration: const Duration(
+            milliseconds: 200,
+          ),
         ),
       ],
     );
