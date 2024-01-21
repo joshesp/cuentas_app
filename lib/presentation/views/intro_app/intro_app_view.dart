@@ -4,8 +4,8 @@ import 'package:cuentas_app/config/constants/texts_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:flutter/material.dart';
 
-class SlideIntroView extends StatelessWidget {
-  const SlideIntroView({super.key});
+class IntroAppView extends StatelessWidget {
+  const IntroAppView({super.key});
 
   @override
   Widget build(BuildContext context) {
