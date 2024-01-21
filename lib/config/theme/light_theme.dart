@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:flutter/material.dart';
 
 import 'text_style_theme.dart';
 
@@ -9,13 +9,13 @@ ThemeData lightTheme() {
   return base.copyWith(
     primaryColor: Coolors.dark,
     scaffoldBackgroundColor: Colors.white,
-    textTheme: const TextTheme(
-      titleLarge: TextStyleTheme.titleLarge,
-      titleMedium: TextStyleTheme.titleMedium,
-      titleSmall: TextStyleTheme.titleSmall,
-      bodyLarge: TextStyleTheme.bodyLarge,
-      bodyMedium: TextStyleTheme.bodyMedium,
-      bodySmall: TextStyleTheme.bodySmall,
+    textTheme: TextTheme(
+      titleLarge: TextStyleTheme.titleLarge.copyWith(color: Coolors.dark),
+      titleMedium: TextStyleTheme.titleMedium.copyWith(color: Coolors.dark),
+      titleSmall: TextStyleTheme.titleSmall.copyWith(color: Coolors.dark),
+      bodyLarge: TextStyleTheme.bodyLarge.copyWith(color: Coolors.dark),
+      bodyMedium: TextStyleTheme.bodyMedium.copyWith(color: Coolors.dark),
+      bodySmall: TextStyleTheme.bodySmall.copyWith(color: Coolors.dark),
     ),
   );
 }
