@@ -1,10 +1,7 @@
+import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
-import 'package:cuentas_app/config/theme/button_style_theme.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
-import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'model/slide_model.dart';
 
 class SliderWidget extends StatefulWidget {
   final List<SlideModel> sliderItems;
@@ -37,14 +34,10 @@ class _SliderWidgetState extends State<SliderWidget> {
       children: [
         Align(
           alignment: Alignment.topRight,
-          child: TextButton(
+          child: ButtonAppWidget(
             onPressed: widget.onActionEnd,
-            child: Text(
-              'Omitir'.toUpperCase(),
-              style: TextStyleTheme.buttonMedium.copyWith(
-                color: Coolors.dark,
-              ),
-            ),
+            text: 'Omitir',
+            styleType: ButtonStyleType.clear,
           ),
         ),
         Expanded(
@@ -142,20 +135,13 @@ class _SliderNavigation extends StatelessWidget {
         ),
         const Spacer(),
         AnimatedCrossFade(
-          firstChild: IconButton.filled(
+          firstChild: ButtonAppWidget(
             onPressed: onNextSlide,
-            icon: const Icon(Icons.arrow_forward),
-            style: basePrimaryBtnStyle,
+            icon: Icons.arrow_forward,
           ),
-          secondChild: ElevatedButton(
-            onPressed: onActionEnd,
-            style: basePrimaryBtnStyle,
-            child: Text(
-              'Empezar'.toUpperCase(),
-              style: TextStyleTheme.buttonMedium.copyWith(
-                color: Colors.white,
-              ),
-            ),
+          secondChild: ButtonAppWidget(
+            onPressed: onNextSlide,
+            text: 'Empezar',
           ),
           crossFadeState: totalBullets - 1 == bulletActive
               ? CrossFadeState.showSecond
