@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
+import 'package:flutter/material.dart';
 
 class TextStyleTheme {
   TextStyleTheme._();
@@ -65,10 +65,14 @@ class TextStyleTheme {
   );
 
   static const buttonMedium = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w600,
     letterSpacing: 1.25,
+    backgroundColor: Colors.transparent,
+    wordSpacing: 1.25,
+    decorationColor: Colors.transparent,
+    decorationThickness: 0,
   );
 
   static const buttonSmall = TextStyle(
@@ -76,5 +80,23 @@ class TextStyleTheme {
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w500,
     letterSpacing: 1.25,
+    backgroundColor: Colors.transparent,
+    wordSpacing: 1.25,
+    decorationColor: Colors.transparent,
+    decorationThickness: 0,
+  );
+
+  static const inputLabel = TextStyle(
+    fontSize: 12,
+    fontFamily: fontPrimary,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.5,
+  );
+
+  static const bodyHintText = TextStyle(
+    fontFamily: fontPrimary,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5,
   );
 }
