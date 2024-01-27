@@ -1,6 +1,7 @@
 import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:flutter/material.dart';
 
+import 'button_style_theme.dart';
 import 'text_style_theme.dart';
 
 ThemeData lightTheme() {
@@ -16,6 +17,15 @@ ThemeData lightTheme() {
       bodyLarge: TextStyleTheme.bodyLarge.copyWith(color: Coolors.dark),
       bodyMedium: TextStyleTheme.bodyMedium.copyWith(color: Coolors.dark),
       bodySmall: TextStyleTheme.bodySmall.copyWith(color: Coolors.dark),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: elevatedBtnStyle,
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: outlinedBtnStyle,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: textBtnStyle,
     ),
   );
 }
