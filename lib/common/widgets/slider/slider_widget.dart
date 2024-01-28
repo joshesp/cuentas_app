@@ -91,17 +91,12 @@ class _SlideContent extends StatelessWidget {
         const SizedBox(height: 64),
         Text(
           slide.title,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Coolors.dark,
-                fontWeight: FontWeight.w600,
-              ),
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(height: minSpacing),
         Text(
           slide.description,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Coolors.dark,
-              ),
+          style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.center,
         ),
       ],
@@ -169,7 +164,7 @@ class _BulletSlideControl extends StatelessWidget {
       height: active ? 14 : 12,
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: active ? Coolors.dark : Coolors.grayLight,
+        color: active ? Coolors.accent : Coolors.gray.withOpacity(0.6),
         shape: BoxShape.circle,
       ),
     );
