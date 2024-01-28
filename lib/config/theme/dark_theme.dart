@@ -1,5 +1,5 @@
-import 'package:cuentas_app/config/theme/button_style_theme.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 import 'text_style_theme.dart';
@@ -8,24 +8,63 @@ ThemeData darkTheme() {
   final ThemeData base = ThemeData.dark();
 
   return base.copyWith(
-    primaryColor: Colors.white,
     scaffoldBackgroundColor: Coolors.dark,
+    extensions: [CustomThemeExtension.lightMode],
     textTheme: TextTheme(
-      titleLarge: TextStyleTheme.titleLarge.copyWith(color: Coolors.light),
-      titleMedium: TextStyleTheme.titleMedium.copyWith(color: Coolors.light),
-      titleSmall: TextStyleTheme.titleSmall.copyWith(color: Coolors.light),
-      bodyLarge: TextStyleTheme.bodyLarge.copyWith(color: Coolors.light),
-      bodyMedium: TextStyleTheme.bodyMedium.copyWith(color: Coolors.light),
-      bodySmall: TextStyleTheme.bodySmall.copyWith(color: Coolors.light),
+      titleLarge: TextStyleTheme.titleLarge.copyWith(color: Colors.white),
+      titleMedium: TextStyleTheme.titleMedium.copyWith(color: Colors.white),
+      titleSmall: TextStyleTheme.titleSmall.copyWith(color: Colors.white),
+      bodyLarge: TextStyleTheme.bodyLarge.copyWith(color: Colors.white),
+      bodyMedium: TextStyleTheme.bodyMedium.copyWith(color: Colors.white),
+      bodySmall: TextStyleTheme.bodySmall.copyWith(color: Colors.white),
+    ).apply(
+      displayColor: Coolors.light,
+      bodyColor: Coolors.light,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: elevatedBtnStyle,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Coolors.primaryDark,
+        foregroundColor: Coolors.dark,
+        disabledBackgroundColor: Coolors.grayLight,
+        disabledForegroundColor: Coolors.gray,
+        textStyle: TextStyleTheme.buttonMedium,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
+        shadowColor: const Color(0xCCD7D7D7),
+      ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
-      style: outlinedBtnStyle,
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: Coolors.dark,
+        disabledForegroundColor: Coolors.gray,
+        disabledBackgroundColor: Coolors.grayLight,
+        textStyle: TextStyleTheme.buttonMedium,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
+        side: const BorderSide(
+          color: Coolors.dark,
+        ),
+      ),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: textBtnStyle,
+      style: TextButton.styleFrom(
+        foregroundColor: Coolors.light,
+        disabledForegroundColor: Coolors.grayLight,
+        disabledBackgroundColor: Colors.transparent,
+        iconColor: Coolors.light,
+        disabledIconColor: Coolors.grayLight,
+        textStyle: TextStyleTheme.buttonMedium,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      ),
     ),
   );
 }
