@@ -10,6 +10,18 @@ ThemeData lightTheme() {
   return base.copyWith(
     scaffoldBackgroundColor: Coolors.light,
     extensions: [CustomThemeExtension.lightMode],
+    appBarTheme: AppBarTheme(
+      color: Coolors.light,
+      centerTitle: false,
+      elevation: 0,
+      iconTheme: const IconThemeData(
+        color: Coolors.dark,
+      ),
+      titleTextStyle: TextStyleTheme.subtitle.copyWith(
+        color: Coolors.dark,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     textTheme: TextTheme(
       titleLarge: TextStyleTheme.titleLarge.copyWith(color: Coolors.dark),
       titleMedium: TextStyleTheme.titleMedium.copyWith(color: Coolors.dark),
@@ -61,6 +73,11 @@ ThemeData lightTheme() {
         disabledIconColor: Coolors.grayLight,
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
       ),
     ),
     textSelectionTheme: const TextSelectionThemeData(
