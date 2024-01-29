@@ -1,4 +1,5 @@
 import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -39,30 +40,27 @@ class InputCustomWidget extends StatelessWidget {
       keyboardType: keyboardType, // And the keyboardType here
       textInputAction: textInputAction,
       onChanged: onChanged,
-      style: TextStyleTheme.bodyHintText.copyWith(
-        color: Coolors.dark,
-      ),
+      style: TextStyleTheme.bodyHintText,
       decoration: InputDecoration(
+        prefixIconColor: context.theme.textColor,
+        suffixIconColor: context.theme.textColor,
+        focusColor: Coolors.accent,
         prefixIcon: prefixIcon != null ? iconInput(prefixIcon!) : null,
         suffixIcon: suffixIcon != null ? iconInput(suffixIcon!) : null,
         labelText: labelText.toUpperCase(),
         labelStyle: TextStyleTheme.inputLabel.copyWith(
-          color: Coolors.gray,
+          color: context.theme.textColor,
         ),
         hintText: hintText,
         hintMaxLines: 1,
-        hintStyle: TextStyleTheme.bodyHintText.copyWith(
-          color: Coolors.grayLight,
-        ),
+        hintStyle: TextStyleTheme.bodyHintText,
         helperText: helperText,
         helperMaxLines: 1,
-        helperStyle: TextStyleTheme.bodySmall.copyWith(
-          color: Coolors.gray,
-        ),
+        helperStyle: TextStyleTheme.bodySmall,
         filled: false,
         contentPadding: const EdgeInsets.all(0),
         border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Coolors.primary, width: 1),
+          borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
         ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Coolors.accent, width: 1),
@@ -80,7 +78,7 @@ class InputCustomWidget extends StatelessWidget {
           ),
         ),
         enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Coolors.primary, width: 1),
+          borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
         ),
         disabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Coolors.grayLight, width: 1),
@@ -93,7 +91,6 @@ class InputCustomWidget extends StatelessWidget {
     return Icon(
       icon,
       size: 24,
-      color: Coolors.dark,
     );
   }
 }

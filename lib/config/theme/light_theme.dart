@@ -63,5 +63,10 @@ ThemeData lightTheme() {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       ),
     ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Coolors.accent,
+      selectionColor: Coolors.accentLight,
+      selectionHandleColor: Coolors.accentLight,
+    ),
   );
 }

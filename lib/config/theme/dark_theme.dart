@@ -9,7 +9,7 @@ ThemeData darkTheme() {
 
   return base.copyWith(
     scaffoldBackgroundColor: Coolors.dark,
-    extensions: [CustomThemeExtension.lightMode],
+    extensions: [CustomThemeExtension.darkMode],
     textTheme: TextTheme(
       titleLarge: TextStyleTheme.titleLarge.copyWith(color: Colors.white),
       titleMedium: TextStyleTheme.titleMedium.copyWith(color: Colors.white),
@@ -65,6 +65,11 @@ ThemeData darkTheme() {
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Coolors.accent,
+      selectionColor: Coolors.accentLight,
+      selectionHandleColor: Coolors.accentLight,
     ),
   );
 }
