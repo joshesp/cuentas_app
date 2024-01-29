@@ -1,6 +1,6 @@
 import 'package:cuentas_app/config/theme/dark_theme.dart';
 import 'package:cuentas_app/config/theme/light_theme.dart';
-import 'package:cuentas_app/presentation/views/auth/sign_in/sign_in_view.dart';
+import 'package:cuentas_app/presentation/views/auth/sign_up/sign_up_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       locale: const Locale('es', 'MX'),
-      home: const SignInView(),
+      home: const SignUpView(),
     );
   }
 }
