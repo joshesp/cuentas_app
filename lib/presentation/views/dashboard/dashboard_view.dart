@@ -9,8 +9,6 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeText = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -35,15 +33,9 @@ class DashboardView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'En este mes',
-                  style: themeText.bodyLarge,
-                ),
-                Text(
-                  'Tu balance',
-                  style: themeText.headlineLarge!.copyWith(
-                    color: context.theme.primaryColor,
-                  ),
+                const TextSection(
+                  subtitle: 'En este mes',
+                  title: 'Tu balance',
                 ),
                 const SizedBox(height: defaultSpacing),
                 const Row(
@@ -64,7 +56,24 @@ class DashboardView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: defaultSpacing),
-                const BarChartWidget()
+                const BarChartWidget(),
+                const SizedBox(height: maxSpacing),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextSection(
+                      subtitle: 'Últimas',
+                      title: 'Transacciones',
+                    ),
+                    const SizedBox(width: 8),
+                    TextLinkWidget(
+                      text: 'Ver todas',
+                      onPressed: () {},
+                    )
+                  ],
+                ),
+                const SizedBox(height: defaultSpacing),
               ],
             ),
           ),

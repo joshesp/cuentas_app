@@ -40,19 +40,11 @@ class SignInView extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: InkWell(
-                  onTap: () {
+                child: TextLinkWidget(
+                  text: 'Olvidaste tu contraseña?',
+                  onPressed: () {
                     _onShowModalBottomSheet(context);
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-                    child: Text(
-                      'Olvidaste tu contraseña?',
-                      style: textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
                 ),
               ),
               const Spacer(),
