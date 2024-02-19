@@ -1,3 +1,4 @@
+import 'package:cuentas_app/common/widgets/ui_icons/type_transaction_icon.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
@@ -31,19 +32,7 @@ class CardTotalTransactionWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: isExpense ? Coolors.dangerLight : Coolors.primary,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Icon(
-                isExpense ? Icons.south_outlined : Icons.north_outlined,
-                color: isExpense ? Coolors.dangerStrong : Coolors.primaryDark,
-              ),
-            ),
-          ),
+          TypeTransactionIcon(isExpense: isExpense),
           const SizedBox(height: 8),
           Text(
             (isExpense ? 'Gasto' : 'Ingreso').toUpperCase(),

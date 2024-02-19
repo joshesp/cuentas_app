@@ -4,6 +4,8 @@ import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:cuentas_app/presentation/widgets/dashboard/card_total_transaction_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/dashboard/item_transaction_widget.dart';
+
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
 
@@ -74,6 +76,19 @@ class DashboardView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: defaultSpacing),
+                ItemTrasactionWidget(
+                  concept: 'Pago de servicios',
+                  amount: 1000,
+                  isExpense: true,
+                  date: DateTime.now(),
+                ),
+                const SizedBox(height: 12),
+                ItemTrasactionWidget(
+                  concept: 'Mantenimiento',
+                  amount: 1300,
+                  isExpense: false,
+                  date: DateTime.now(),
+                ),
               ],
             ),
           ),
