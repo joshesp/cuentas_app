@@ -48,43 +48,29 @@ class BarChartWidgetState extends State<BarChartWidget> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            SizedBox(
-              height: 140,
-              child: BarChart(
-                BarChartData(
-                  maxY: 20,
-                  barTouchData: BarTouchData(
-                    touchTooltipData: BarTouchTooltipData(
-                      tooltipBgColor: Coolors.accentLight,
-                      getTooltipItem: (a, b, c, d) => BarTooltipItem(
-                        '\$1,000.00',
-                        TextStyleTheme.bodySmall.copyWith(
-                          color: Coolors.dark,
-                        ),
-                      ),
-                    ),
-                  ),
-                  titlesData: const FlTitlesData(
-                    show: false,
-                  ),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  barGroups: showingBarGroups,
-                  gridData: const FlGridData(show: true),
+      aspectRatio: 2,
+      child: BarChart(
+        BarChartData(
+          maxY: 20,
+          barTouchData: BarTouchData(
+            touchTooltipData: BarTouchTooltipData(
+              tooltipBgColor: Coolors.accentLight,
+              getTooltipItem: (a, b, c, d) => BarTooltipItem(
+                '\$1,000.00',
+                TextStyleTheme.bodySmall.copyWith(
+                  color: Coolors.dark,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 12,
-            ),
-          ],
+          ),
+          titlesData: const FlTitlesData(
+            show: false,
+          ),
+          borderData: FlBorderData(
+            show: false,
+          ),
+          barGroups: showingBarGroups,
+          gridData: const FlGridData(show: true),
         ),
       ),
     );
