@@ -6,66 +6,66 @@ class TextStyleTheme {
 
   static const titleLarge = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 28,
+    fontSize: titleLargeSize,
     fontWeight: FontWeight.w700,
   );
 
   static const titleMedium = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 26,
+    fontSize: titleMediumSize,
     fontWeight: FontWeight.w500,
   );
 
   static const titleSmall = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 24,
+    fontSize: titleSmallSize,
     fontWeight: FontWeight.w500,
   );
 
   static const subtitle = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 18,
+    fontSize: subtitleSize,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.15,
   );
 
   static const bodyLarge = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 16,
+    fontSize: bodySize,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
   );
 
   static const bodyMedium = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 14,
+    fontSize: bodyMediumSize,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.25,
   );
 
   static const bodySmall = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 12,
+    fontSize: bodySmallSize,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.30,
   );
 
   static const captionMedium = TextStyle(
-    fontSize: 10,
+    fontSize: captionSize,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.4,
   );
 
   static const captionSmall = TextStyle(
-    fontSize: 8,
+    fontSize: captionSmallSize,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
   );
 
   static const buttonMedium = TextStyle(
-    fontSize: 16,
+    fontSize: bodySize,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w600,
     letterSpacing: 1.25,
@@ -76,7 +76,7 @@ class TextStyleTheme {
   );
 
   static const buttonSmall = TextStyle(
-    fontSize: 12,
+    fontSize: bodySmallSize,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w500,
     letterSpacing: 1.25,
@@ -87,7 +87,7 @@ class TextStyleTheme {
   );
 
   static const inputLabel = TextStyle(
-    fontSize: 12,
+    fontSize: bodySmallSize,
     fontFamily: fontPrimary,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.5,
@@ -95,7 +95,7 @@ class TextStyleTheme {
 
   static const bodyHintText = TextStyle(
     fontFamily: fontPrimary,
-    fontSize: 16,
+    fontSize: bodySize,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
   );

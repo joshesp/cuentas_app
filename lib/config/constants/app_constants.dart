@@ -19,3 +19,14 @@ const maxSpacing = 32.0;
 
 // Fonts
 const fontPrimary = 'Montserrat';
+
+// Sizes text
+const titleLargeSize = 28.0;
+const titleMediumSize = 26.0;
+const titleSmallSize = 24.0;
+const subtitleSize = 18.0;
+const bodySize = 16.0;
+const bodyMediumSize = 14.0;
+const bodySmallSize = 12.0;
+const captionSize = 10.0;
+const captionSmallSize = 8.0;
