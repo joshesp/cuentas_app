@@ -14,7 +14,7 @@ class DashboardView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: maxSpacing),
+          padding: const EdgeInsets.symmetric(horizontal: 14),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
