@@ -4,12 +4,14 @@ import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class TextSection extends StatelessWidget {
-  final String title;
+  final String headline1;
+  final String headline2;
   final String subtitle;
 
   const TextSection({
     super.key,
-    required this.title,
+    this.headline1 = '',
+    this.headline2 = '',
     required this.subtitle,
   });
 
@@ -20,6 +22,7 @@ class TextSection extends StatelessWidget {
     final themeText = Theme.of(context).textTheme;
     double bodyLarge = ScreenSizeUtil.getScaledSize(bodySize);
     double healineLarge = ScreenSizeUtil.getScaledSize(titleLargeSize);
+    double healineMedium = ScreenSizeUtil.getScaledSize(titleMediumSize);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,13 +31,22 @@ class TextSection extends StatelessWidget {
           subtitle,
           style: themeText.bodyLarge!.copyWith(fontSize: bodyLarge),
         ),
-        Text(
-          title,
-          style: themeText.headlineLarge!.copyWith(
-            color: context.theme.primaryColor,
-            fontSize: healineLarge,
+        if (headline1.isNotEmpty)
+          Text(
+            headline1,
+            style: themeText.titleLarge!.copyWith(
+              color: context.theme.primaryColor,
+              fontSize: healineLarge,
+            ),
           ),
-        ),
+        if (headline1.isEmpty && headline2.isNotEmpty)
+          Text(
+            headline2,
+            style: themeText.titleMedium!.copyWith(
+              color: context.theme.primaryColor,
+              fontSize: healineMedium,
+            ),
+          ),
       ],
     );
   }

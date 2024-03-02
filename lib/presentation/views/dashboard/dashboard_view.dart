@@ -30,14 +30,18 @@ class DashboardView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(maxSpacing),
+          padding: const EdgeInsets.only(
+            left: maxSpacing,
+            right: maxSpacing,
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: defaultSpacing),
                 const TextSection(
                   subtitle: 'En este mes',
-                  title: 'Tu balance',
+                  headline1: 'Tu balance',
                 ),
                 const SizedBox(height: defaultSpacing),
                 const Row(
@@ -66,7 +70,7 @@ class DashboardView extends StatelessWidget {
                   children: [
                     const TextSection(
                       subtitle: 'Últimas',
-                      title: 'Transacciones',
+                      headline2: 'Transacciones',
                     ),
                     const SizedBox(width: 8),
                     TextLinkWidget(
@@ -89,6 +93,7 @@ class DashboardView extends StatelessWidget {
                   isExpense: false,
                   date: DateTime.now(),
                 ),
+                const SizedBox(height: maxSpacing),
               ],
             ),
           ),

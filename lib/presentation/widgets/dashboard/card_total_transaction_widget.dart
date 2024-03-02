@@ -27,12 +27,15 @@ class CardTotalTransactionWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(minSpacing),
         border: Border.all(
           color: isExpense ? Coolors.danger : Coolors.primaryDark,
-          width: 2,
+          width: 1,
         ),
       ),
       child: Column(
         children: [
-          TypeTransactionIcon(isExpense: isExpense),
+          TypeTransactionIcon(
+            isExpense: isExpense,
+            small: true,
+          ),
           const SizedBox(height: 8),
           Text(
             (isExpense ? 'Gasto' : 'Ingreso').toUpperCase(),

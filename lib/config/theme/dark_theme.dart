@@ -12,6 +12,7 @@ ThemeData darkTheme() {
     extensions: [CustomThemeExtension.darkMode],
     appBarTheme: AppBarTheme(
       color: Coolors.dark,
+      surfaceTintColor: Colors.transparent,
       centerTitle: false,
       elevation: 0,
       iconTheme: const IconThemeData(

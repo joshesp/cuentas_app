@@ -8,10 +8,11 @@ ThemeData lightTheme() {
   final ThemeData base = ThemeData.dark();
 
   return base.copyWith(
-    scaffoldBackgroundColor: Coolors.light,
+    scaffoldBackgroundColor: Colors.white,
     extensions: [CustomThemeExtension.lightMode],
     appBarTheme: AppBarTheme(
-      color: Coolors.light,
+      surfaceTintColor: Colors.transparent,
+      color: Colors.white,
       centerTitle: false,
       elevation: 0,
       iconTheme: const IconThemeData(

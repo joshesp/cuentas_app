@@ -7,19 +7,19 @@ class TextStyleTheme {
   static const titleLarge = TextStyle(
     fontFamily: fontPrimary,
     fontSize: titleLargeSize,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
   );
 
   static const titleMedium = TextStyle(
     fontFamily: fontPrimary,
     fontSize: titleMediumSize,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
   );
 
   static const titleSmall = TextStyle(
     fontFamily: fontPrimary,
     fontSize: titleSmallSize,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
   );
 
   static const subtitle = TextStyle(
