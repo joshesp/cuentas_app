@@ -21,7 +21,7 @@ class CardTotalTransactionWidget extends StatelessWidget {
     final formatter = NumberFormat.simpleCurrency();
 
     return Container(
-      padding: const EdgeInsets.all(minSpacing),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(minSpacing),
