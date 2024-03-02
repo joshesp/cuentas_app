@@ -1,6 +1,5 @@
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
-import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:cuentas_app/presentation/widgets/dashboard/card_total_transaction_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,22 +11,7 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Hola Jonh Smith!'),
-              Icon(
-                Icons.account_circle,
-                size: 34,
-                color: context.theme.primaryColor,
-              ),
-            ],
-          ),
-        ),
-      ),
+      appBar: headerApp(context: context, title: 'Hola Jonh Smith!'),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(

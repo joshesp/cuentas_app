@@ -1,6 +1,6 @@
 import 'package:cuentas_app/config/theme/dark_theme.dart';
 import 'package:cuentas_app/config/theme/light_theme.dart';
-import 'package:cuentas_app/presentation/views/dashboard/dashboard_view.dart';
+import 'package:cuentas_app/presentation/views/transactions/transactions_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       locale: const Locale('es', 'MX'),
-      home: const DashboardView(),
+      home: const TransactionsView(),
     );
   }
 }
