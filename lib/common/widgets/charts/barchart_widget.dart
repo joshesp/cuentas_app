@@ -70,7 +70,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
             show: false,
           ),
           barGroups: showingBarGroups,
-          gridData: const FlGridData(show: true),
+          gridData: const FlGridData(show: false),
         ),
       ),
     );
