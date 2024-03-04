@@ -1,9 +1,23 @@
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
-import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/material.dart';
+
+List<String> months = <String>[
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
+];
 
 class TransactionsView extends StatelessWidget {
   const TransactionsView({super.key});
@@ -23,7 +37,46 @@ class TransactionsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: defaultSpacing),
-                MySegmentedControl(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomSlidingSegmentedControl<int>(
+                      initialValue: 1,
+                      children: const <int, Widget>{
+                        1: Text(
+                          'Todos',
+                          style: TextStyle(color: Coolors.dark),
+                        ),
+                        2: Text(
+                          'Ingresos',
+                          style: TextStyle(color: Coolors.dark),
+                        ),
+                        3: Text(
+                          'Gastos',
+                          style: TextStyle(color: Coolors.dark),
+                        ),
+                      },
+                      padding: 10,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Coolors.accent,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      thumbDecoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInToLinear,
+                      onValueChanged: (v) {},
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: DropdownButtonWidget(options: months),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: defaultSpacing),
                 const TextSection(
                   subtitle: 'Transacciones',
                   headline1: 'Enero',
@@ -33,55 +86,6 @@ class TransactionsView extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class MySegmentedControl extends StatefulWidget {
-  const MySegmentedControl({super.key});
-
-  @override
-  State<MySegmentedControl> createState() => _MySegmentedControlState();
-}
-
-class _MySegmentedControlState extends State<MySegmentedControl> {
-  final Map<int, Widget> myTabs = const <int, Widget>{
-    0: Text(
-      'Todos',
-      style: TextStyle(),
-    ),
-    1: Text('Ingresos'),
-    3: Text('Gastos'),
-  };
-
-  int sharedValue = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoTheme(
-      data: CupertinoThemeData(
-        primaryColor: context.theme.primaryColor, // Changes the border color
-        brightness: Brightness.dark, // Changes the text color
-      ),
-      child: SizedBox(
-        width: double.infinity,
-        child: CupertinoSegmentedControl<int>(
-          children: myTabs,
-          onValueChanged: (int val) {
-            setState(() {
-              sharedValue = val;
-            });
-          },
-          groupValue: sharedValue,
-          borderColor: Coolors.accent, // Changes the border color
-          selectedColor:
-              Colors.white, // Changes the background color of the selected tab
-          unselectedColor: Coolors
-              .accent, // Changes the background color of the unselected tabs
-          pressedColor: Coolors
-              .primary, // Changes the background color when a tab is pressed
         ),
       ),
     );
