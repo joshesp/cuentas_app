@@ -48,7 +48,6 @@ class _DropdownButtonWidget<T> extends State<DropdownButtonWidget<T>> {
               alignment: Alignment.centerLeft,
               child: Text(
                 dropdownValue.toString(),
-                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Coolors.dark,
                   fontSize: 14,

@@ -8,3 +8,4 @@ export './ui_appbar/ui_appbar.dart';
 export './ui_divisions/text_section_widget.dart';
 export './ui_icons/type_transaction_icon.dart';
 export './ui_notifications/ui_notifications_widget.dart';
+export './ui_segment/ui_segment_widget.dart';

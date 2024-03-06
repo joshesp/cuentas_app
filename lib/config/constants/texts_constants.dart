@@ -18,3 +18,18 @@ List<SlideModel> sliderIntro = [
     description: "Obtén tu reporte aproximado de tus impuestos mensuales.",
   ),
 ];
+
+List<String> monthsList = <String>[
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre'
+];
