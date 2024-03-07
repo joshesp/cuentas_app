@@ -1,9 +1,11 @@
 export './button_app/button_app_widget.dart';
 export './button_app/text_link_widget.dart';
 export './charts/barchart_widget.dart';
+export './charts/linechart_widget.dart';
 export './dropdown_button/dropdown_button_widget.dart';
 export './slider/model/slide_model.dart';
 export './slider/slider_widget.dart';
+export './total_transaction_item/total_transaction_tem_widget.dart';
 export './ui_appbar/ui_appbar.dart';
 export './ui_divisions/text_section_widget.dart';
 export './ui_icons/type_transaction_icon.dart';

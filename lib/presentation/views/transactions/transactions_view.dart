@@ -40,7 +40,35 @@ class TransactionsView extends StatelessWidget {
                   headline1: 'Enero',
                 ),
                 const SizedBox(height: defaultSpacing),
+                const LineChartWidget(),
                 const SizedBox(height: maxSpacing),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TotalTransactionItemWidget(
+                      isExpense: false,
+                      total: 1000,
+                      clear: true,
+                    ),
+                    SizedBox(width: 8),
+                    TotalTransactionItemWidget(
+                      isExpense: true,
+                      total: 1000,
+                      clear: true,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: defaultSpacing),
+                Align(
+                  alignment: Alignment.center,
+                  child: ButtonAppWidget(
+                    text: 'Ver transacciones',
+                    size: ButtonSize.small,
+                    icon: Icons.list_alt_outlined,
+                    iconPosition: IconPosition.left,
+                    onPressed: () {},
+                  ),
+                )
               ],
             ),
           ),
