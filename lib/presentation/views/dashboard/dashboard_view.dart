@@ -1,6 +1,5 @@
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
-import 'package:cuentas_app/presentation/widgets/dashboard/card_total_transaction_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/dashboard/item_transaction_widget.dart';
@@ -31,14 +30,14 @@ class DashboardView extends StatelessWidget {
                 const Row(
                   children: [
                     Expanded(
-                      child: CardTotalTransactionWidget(
+                      child: TotalTransactionItemWidget(
                         isExpense: false,
                         total: 100000,
                       ),
                     ),
                     SizedBox(width: 8),
                     Expanded(
-                      child: CardTotalTransactionWidget(
+                      child: TotalTransactionItemWidget(
                         isExpense: true,
                         total: 100000,
                       ),
