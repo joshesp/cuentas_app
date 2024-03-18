@@ -14,6 +14,7 @@ dependencies:
   fl_chart: ^0.66.2
   flutter_screenutil: ^5.0.0+2
   custom_sliding_segmented_control: ^1.8.1
+  rive: 0.11.11
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +25,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/animations/
   fonts:
     - family: Montserrat
       fonts:
