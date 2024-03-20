@@ -68,6 +68,11 @@ class _SliderWidgetState extends State<SliderWidget> {
   }
 
   void onNextSlide() {
+    if (currentIndexSlide == widget.sliderItems.length - 1) {
+      widget.onActionEnd();
+      return;
+    }
+
     pageControl.nextPage(
       duration: const Duration(milliseconds: 300),
       curve: Curves.linear,

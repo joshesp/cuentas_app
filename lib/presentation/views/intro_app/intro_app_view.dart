@@ -3,8 +3,11 @@ import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/constants/texts_constants.dart';
 // import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class IntroAppView extends StatelessWidget {
+  static const name = "introScreen";
+
   const IntroAppView({super.key});
 
   @override
@@ -18,7 +21,9 @@ class IntroAppView extends StatelessWidget {
           ),
           child: SliderWidget(
             sliderItems: sliderIntro,
-            onActionEnd: () {},
+            onActionEnd: () {
+              context.go('/auth/login');
+            },
           ),
         ),
       ),

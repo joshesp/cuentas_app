@@ -7,6 +7,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../common/widgets/widgets.dart';
 
 class SignInView extends StatelessWidget {
+  static const name = "signInScreen";
+
   const SignInView({super.key});
 
   @override

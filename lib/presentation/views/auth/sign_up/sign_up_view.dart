@@ -4,6 +4,8 @@ import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
+  static const name = "signUpScreen";
+
   const SignUpView({super.key});
 
   @override

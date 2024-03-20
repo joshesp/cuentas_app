@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../../widgets/dashboard/item_transaction_widget.dart';
 
 class DashboardView extends StatelessWidget {
+  static const name = "dashboardScreen";
+
   const DashboardView({super.key});
 
   @override

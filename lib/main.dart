@@ -1,6 +1,6 @@
+import 'package:cuentas_app/config/routes/app_route.dart';
 import 'package:cuentas_app/config/theme/dark_theme.dart';
 import 'package:cuentas_app/config/theme/light_theme.dart';
-import 'package:cuentas_app/presentation/views/splashscreen/splascreen_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +12,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       locale: const Locale('es', 'MX'),
-      home: const SplashscreenView(),
+      routerConfig: appRouter,
     );
   }
 }
