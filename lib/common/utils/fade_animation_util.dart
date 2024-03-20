@@ -33,7 +33,7 @@ class _FadeAnimationUtilState extends State<FadeAnimationUtil> {
       _visible = widget.fadeType == TypeAnimationAction.fadeOut;
     });
 
-    if (widget.delay != null) {
+    if (widget.delay != null && context.mounted) {
       Timer(widget.delay!, () {
         setState(() {
           _visible = !_visible;
