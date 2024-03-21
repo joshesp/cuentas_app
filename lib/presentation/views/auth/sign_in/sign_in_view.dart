@@ -14,62 +14,67 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final sizeScreen = MediaQuery.of(context).size;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           behavior: HitTestBehavior.opaque,
-          child: Padding(
-            padding: const EdgeInsets.all(maxSpacing),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Spacer(),
-                SvgPicture.asset('assets/images/cuentas_app_iso.svg'),
-                const SizedBox(height: minSpacing),
-                Text(
-                  "Hola,\n¡Bienvenido!",
-                  style: textTheme.titleLarge,
-                ),
-                const Spacer(),
-                const InputCustomWidget(
-                  labelText: 'Correo',
-                  hintText: 'Ingresa tu correo',
-                  prefixIcon: Icons.alternate_email,
-                ),
-                const InputCustomWidget(
-                  labelText: 'Contraseña',
-                  hintText: 'Ingresa tu contraseña',
-                  prefixIcon: Icons.lock,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextLinkWidget(
-                    text: 'Olvidaste tu contraseña?',
-                    onPressed: () {
-                      _onShowModalBottomSheet(context);
-                    },
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            reverse: true,
+            child: Container(
+              height: sizeScreen.height,
+              padding: const EdgeInsets.all(maxSpacing),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  SvgPicture.asset('assets/images/cuentas_app_iso.svg'),
+                  const SizedBox(height: minSpacing),
+                  Text(
+                    "Hola,\n¡Bienvenido!",
+                    style: textTheme.titleLarge,
                   ),
-                ),
-                const Spacer(),
-                ButtonAppWidget(
-                  text: 'Ingresar',
-                  icon: Icons.arrow_forward_ios,
-                  fullWidth: true,
-                  onPressed: () {},
-                ),
-                const SizedBox(height: minSpacing),
-                ButtonAppWidget(
-                  text: 'Crear cuenta',
-                  fullWidth: true,
-                  styleType: ButtonStyleType.clear,
-                  onPressed: () {},
-                ),
-              ],
+                  const Spacer(),
+                  const InputCustomWidget(
+                    labelText: 'Correo',
+                    hintText: 'Ingresa tu correo',
+                    prefixIcon: Icons.alternate_email,
+                  ),
+                  const InputCustomWidget(
+                    labelText: 'Contraseña',
+                    hintText: 'Ingresa tu contraseña',
+                    prefixIcon: Icons.lock,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextLinkWidget(
+                      text: 'Olvidaste tu contraseña?',
+                      onPressed: () {
+                        _onShowModalBottomSheet(context);
+                      },
+                    ),
+                  ),
+                  const Spacer(),
+                  ButtonAppWidget(
+                    text: 'Ingresar',
+                    icon: Icons.arrow_forward_ios,
+                    fullWidth: true,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: minSpacing),
+                  ButtonAppWidget(
+                    text: 'Crear cuenta',
+                    fullWidth: true,
+                    styleType: ButtonStyleType.clear,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
           ),
         ),
