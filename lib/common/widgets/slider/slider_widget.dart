@@ -1,3 +1,4 @@
+import 'package:cuentas_app/common/utils/fade_animation_util.dart';
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
@@ -48,7 +49,11 @@ class _SliderWidgetState extends State<SliderWidget> {
             itemBuilder: (context, index) {
               final slide = widget.sliderItems[index];
 
-              return _SlideContent(slide: slide);
+              return FadeAnimationUtil(
+                duration: const Duration(milliseconds: 600),
+                delay: const Duration(milliseconds: 100),
+                child: _SlideContent(slide: slide),
+              );
             },
             onPageChanged: (index) {
               setState(() {
