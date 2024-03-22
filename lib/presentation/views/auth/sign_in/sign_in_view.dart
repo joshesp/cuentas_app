@@ -40,16 +40,7 @@ class SignInView extends StatelessWidget {
                     style: textTheme.titleLarge,
                   ),
                   const Spacer(),
-                  const InputCustomWidget(
-                    labelText: 'Correo',
-                    hintText: 'Ingresa tu correo',
-                    prefixIcon: Icons.alternate_email,
-                  ),
-                  const InputCustomWidget(
-                    labelText: 'Contraseña',
-                    hintText: 'Ingresa tu contraseña',
-                    prefixIcon: Icons.lock,
-                  ),
+                  const _FormSignIn(),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextLinkWidget(
@@ -119,6 +110,38 @@ class SignInView extends StatelessWidget {
           fullWidth: true,
           styleType: ButtonStyleType.clear,
           onPressed: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _FormSignIn extends StatefulWidget {
+  const _FormSignIn();
+
+  @override
+  State<_FormSignIn> createState() => _FormSignInState();
+}
+
+class _FormSignInState extends State<_FormSignIn> {
+  final focusPasswordNode = FocusNode();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        InputCustomWidget(
+          labelText: 'Correo',
+          hintText: 'Ingresa tu correo',
+          prefixIcon: Icons.alternate_email,
+          keyboardType: TextInputType.emailAddress,
+          focusNodeNext: focusPasswordNode,
+        ),
+        InputCustomWidget(
+          labelText: 'Contraseña',
+          hintText: 'Ingresa tu contraseña',
+          prefixIcon: Icons.lock,
+          focusNode: focusPasswordNode,
         ),
       ],
     );
