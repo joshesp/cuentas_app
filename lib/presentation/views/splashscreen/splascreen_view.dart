@@ -84,7 +84,7 @@ class _SplashscreenViewState extends State<SplashscreenView> {
   }
 
   void redirectTo() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 4900), () {
       context.go('/intro');
     });
   }
