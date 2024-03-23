@@ -1,4 +1,3 @@
-import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rive/rive.dart';
@@ -12,15 +11,16 @@ class SplashscreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     redirectTo(context);
 
-    return const Scaffold(
-      backgroundColor: Coolors.dark,
+    return Scaffold(
       body: SafeArea(
         child: Center(
           child: SizedBox(
             width: 160,
             height: 120,
             child: RiveAnimation.asset(
-              'assets/animations/logo_splash_intro.riv',
+              Theme.of(context).brightness != Brightness.dark
+                  ? 'assets/animations/logo_splash_intro_dark.riv'
+                  : 'assets/animations/logo_splash_intro_light.riv',
               fit: BoxFit.contain,
             ),
           ),
