@@ -20,5 +20,6 @@ class Coolors {
 
   static const danger = Color(colorDanger);
   static const dangerStrong = Color(colorDangerStrong);
+  static const dangerDarker = Color(colorDangerDarker);
   static const dangerLight = Color(colorDangerLight);
 }

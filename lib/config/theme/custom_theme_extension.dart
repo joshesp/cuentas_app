@@ -14,6 +14,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? backgroundColor;
   final Color? textColor;
   final Color? textGray;
+  final Color? textError;
 
   const CustomThemeExtension({
     this.primaryColor,
@@ -21,6 +22,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     this.backgroundColor,
     this.textColor,
     this.textGray,
+    this.textError,
   });
 
   static const lightMode = CustomThemeExtension(
@@ -29,6 +31,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     backgroundColor: Coolors.light,
     textColor: Coolors.dark,
     textGray: Coolors.gray,
+    textError: Coolors.dangerDarker,
   );
 
   static const darkMode = CustomThemeExtension(
@@ -37,6 +40,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     backgroundColor: Coolors.darker,
     textColor: Colors.white,
     textGray: Coolors.grayLight,
+    textError: Coolors.danger,
   );
 
   @override
@@ -46,6 +50,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     Color? backgroundColor,
     Color? textColor,
     Color? textGray,
+    Color? textError,
   }) {
     return CustomThemeExtension(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -53,6 +58,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       backgroundColor: backgroundColor ?? this.backgroundColor,
       textColor: textColor ?? this.textColor,
       textGray: textGray ?? this.textGray,
+      textError: textError ?? this.textError,
     );
   }
 
@@ -69,6 +75,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       textColor: Color.lerp(textColor, other.textColor, t),
       textGray: Color.lerp(textGray, other.textGray, t),
+      textError: Color.lerp(textError, other.textError, t),
     );
   }
 }

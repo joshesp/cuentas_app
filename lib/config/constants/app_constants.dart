@@ -10,6 +10,7 @@ const colorGray = 0XFF5B5B5B;
 const colorGrayLight = 0XFFD8D8D8;
 const colorDanger = 0XFFF4BCBC;
 const colorDangerStrong = 0XFFFF6262;
+const colorDangerDarker = 0xFFBC5050;
 const colorDangerLight = 0XFFFFDCDC;
 
 // Margin and Padding
