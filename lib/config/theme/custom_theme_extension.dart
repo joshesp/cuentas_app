@@ -12,6 +12,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? primaryColor;
   final Color? accentColor;
   final Color? backgroundColor;
+  final Color? backgroundActiveBullet;
   final Color? textColor;
   final Color? textGray;
   final Color? textError;
@@ -20,6 +21,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     this.primaryColor,
     this.accentColor,
     this.backgroundColor,
+    this.backgroundActiveBullet,
     this.textColor,
     this.textGray,
     this.textError,
@@ -29,6 +31,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     primaryColor: Coolors.dark,
     accentColor: Coolors.accent,
     backgroundColor: Coolors.light,
+    backgroundActiveBullet: Coolors.primaryDark,
     textColor: Coolors.dark,
     textGray: Coolors.gray,
     textError: Coolors.dangerDarker,
@@ -38,6 +41,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     primaryColor: Coolors.light,
     accentColor: Coolors.accent,
     backgroundColor: Coolors.darker,
+    backgroundActiveBullet: Coolors.primary,
     textColor: Colors.white,
     textGray: Coolors.grayLight,
     textError: Coolors.danger,
@@ -48,6 +52,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     Color? primaryColor,
     Color? accentColor,
     Color? backgroundColor,
+    Color? backgroundActiveBullet,
     Color? textColor,
     Color? textGray,
     Color? textError,
@@ -56,6 +61,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       primaryColor: primaryColor ?? this.primaryColor,
       accentColor: accentColor ?? this.accentColor,
       backgroundColor: backgroundColor ?? this.backgroundColor,
+      backgroundActiveBullet:
+          backgroundActiveBullet ?? this.backgroundActiveBullet,
       textColor: textColor ?? this.textColor,
       textGray: textGray ?? this.textGray,
       textError: textError ?? this.textError,
@@ -73,6 +80,11 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       accentColor: Color.lerp(accentColor, other.accentColor, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      backgroundActiveBullet: Color.lerp(
+        backgroundActiveBullet,
+        other.backgroundActiveBullet,
+        t,
+      ),
       textColor: Color.lerp(textColor, other.textColor, t),
       textGray: Color.lerp(textGray, other.textGray, t),
       textError: Color.lerp(textError, other.textError, t),

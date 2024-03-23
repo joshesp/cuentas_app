@@ -36,7 +36,7 @@ ThemeData darkTheme() {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Coolors.primaryDark,
+        backgroundColor: Coolors.primary,
         foregroundColor: Coolors.dark,
         disabledBackgroundColor: Coolors.grayLight,
         disabledForegroundColor: Coolors.gray,
@@ -52,7 +52,7 @@ ThemeData darkTheme() {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: Colors.white,
+        foregroundColor: Coolors.light,
         backgroundColor: Coolors.dark,
         disabledForegroundColor: Coolors.gray,
         disabledBackgroundColor: Coolors.grayLight,
