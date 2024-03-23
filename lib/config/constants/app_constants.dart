@@ -1,17 +1,16 @@
 // Colors
-const colorPrimary = 0XFFDAEBD7;
-const colorPrimaryDark = 0XFF94BA8E;
-const colorAccent = 0XFFC2E7EA;
-const colorAccentLight = 0XFFEBF7F8;
+const colorPrimary = 0XFFC2E7EA;
+const colorPrimaryDark = 0XFF85B2B5;
+const colorAcent = 0XFFDAEBD7;
+const colorAcentDark = 0XFF94BA8E;
 const colorDark = 0XFF191919;
 const colorDarker = 0xFF101010;
-const colorLight = 0XFFF8FCF7;
+const colorLight = 0XFFF4FEFF;
 const colorGray = 0XFF5B5B5B;
 const colorGrayLight = 0XFFD8D8D8;
-const colorDanger = 0XFFF4BCBC;
-const colorDangerStrong = 0XFFFF6262;
-const colorDangerDarker = 0xFFBC5050;
-const colorDangerLight = 0XFFFFDCDC;
+const colorDanger = 0XFFFF6262;
+const colorDangerDarker = 0XFFBC5050;
+const colorDangerLight = 0XFFF4BCBC;
 
 // Margin and Padding
 const minSpacing = 16.0;

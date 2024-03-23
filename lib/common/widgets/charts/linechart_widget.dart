@@ -178,7 +178,7 @@ class LineChartWidgetState extends State<LineChartWidget> {
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(
           show: false,
-          color: Coolors.dangerStrong.withOpacity(0),
+          color: Coolors.danger.withOpacity(0),
         ),
         spots: const [
           FlSpot(1, 1),

@@ -54,7 +54,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
           maxY: 20,
           barTouchData: BarTouchData(
             touchTooltipData: BarTouchTooltipData(
-              tooltipBgColor: Coolors.accentLight,
+              tooltipBgColor: Coolors.accent,
               getTooltipItem: (a, b, c, d) => BarTooltipItem(
                 '\$1,000.00',
                 TextStyleTheme.bodySmall.copyWith(

@@ -30,7 +30,7 @@ class TypeTransactionIcon extends StatelessWidget {
         padding: const EdgeInsets.all(4.0),
         child: Icon(
           isExpense ? Icons.south_outlined : Icons.north_outlined,
-          color: isExpense ? Coolors.dangerStrong : Coolors.primaryDark,
+          color: isExpense ? Coolors.danger : Coolors.accent,
           size: small ? 16 : 24,
         ),
       ),
