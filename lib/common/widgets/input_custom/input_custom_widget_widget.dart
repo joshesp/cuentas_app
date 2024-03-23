@@ -16,12 +16,17 @@ class InputCustomWidget extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onChanged;
+  final bool obscureText;
+  final bool readOnly;
+  final AutovalidateMode autovalidateMode;
 
   const InputCustomWidget({
     super.key,
     required this.labelText,
     required this.hintText,
     this.helperText = '',
+    this.obscureText = false,
+    this.readOnly = false,
     this.prefixIcon,
     this.suffixIcon,
     this.controller,
@@ -31,13 +36,16 @@ class InputCustomWidget extends StatelessWidget {
     this.keyboardType,
     this.textInputAction,
     this.onChanged,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
       controller: controller,
       validator: validator,
+      autovalidateMode: autovalidateMode,
       focusNode: focusNode,
       keyboardType: keyboardType,
       textInputAction: textInputAction,
@@ -47,6 +55,8 @@ class InputCustomWidget extends StatelessWidget {
           FocusScope.of(context).requestFocus(focusNodeNext);
         }
       },
+      inputFormatters: const [],
+      obscureText: obscureText,
       style: TextStyleTheme.bodyHintText,
       decoration: _decorationInput(context),
     );
@@ -54,14 +64,15 @@ class InputCustomWidget extends StatelessWidget {
 
   InputDecoration _decorationInput(BuildContext context) {
     return InputDecoration(
-      prefixIconColor: context.theme.textColor,
-      suffixIconColor: context.theme.textColor,
       focusColor: Coolors.accent,
       prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!) : null,
       suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!) : null,
       labelText: labelText.toUpperCase(),
       labelStyle: TextStyleTheme.inputLabel.copyWith(
-        color: context.theme.textColor,
+        color: context.theme.textGray,
+      ),
+      errorStyle: TextStyleTheme.inputLabel.copyWith(
+        color: context.theme.textError,
       ),
       hintText: hintText,
       hintMaxLines: 1,
@@ -72,25 +83,25 @@ class InputCustomWidget extends StatelessWidget {
       filled: false,
       contentPadding: const EdgeInsets.all(0),
       border: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
+        borderSide: BorderSide(color: Coolors.primary, width: 1),
       ),
       focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.accent, width: 1),
+        borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
       ),
       focusedErrorBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Coolors.dangerStrong,
+          color: Coolors.dangerDarker,
           width: 1,
         ),
       ),
       errorBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Coolors.dangerStrong,
+          color: Coolors.dangerDarker,
           width: 1,
         ),
       ),
       enabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
+        borderSide: BorderSide(color: Coolors.primary, width: 1),
       ),
       disabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: Coolors.grayLight, width: 1),
@@ -101,7 +112,8 @@ class InputCustomWidget extends StatelessWidget {
   Icon _iconInput(IconData icon) {
     return Icon(
       icon,
-      size: 24,
+      color: Coolors.primaryDark,
+      size: 22,
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../common/utils/index.dart';
 import '../../../../common/widgets/widgets.dart';
 
 class SignInView extends StatelessWidget {
@@ -39,31 +40,9 @@ class SignInView extends StatelessWidget {
                     "Hola,\n¡Bienvenido!",
                     style: textTheme.titleLarge,
                   ),
+                  const SizedBox(height: maxSpacing),
                   const Spacer(),
                   const _FormSignIn(),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextLinkWidget(
-                      text: 'Olvidaste tu contraseña?',
-                      onPressed: () {
-                        _onShowModalBottomSheet(context);
-                      },
-                    ),
-                  ),
-                  const Spacer(),
-                  ButtonAppWidget(
-                    text: 'Ingresar',
-                    icon: Icons.arrow_forward_ios,
-                    fullWidth: true,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: minSpacing),
-                  ButtonAppWidget(
-                    text: 'Crear cuenta',
-                    fullWidth: true,
-                    styleType: ButtonStyleType.clear,
-                    onPressed: () {},
-                  ),
                 ],
               ),
             ),
@@ -71,6 +50,78 @@ class SignInView extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _FormSignIn extends StatefulWidget {
+  const _FormSignIn();
+
+  @override
+  State<_FormSignIn> createState() => _FormSignInState();
+}
+
+class _FormSignInState extends State<_FormSignIn> {
+  final _focusPasswordNode = FocusNode();
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          InputCustomWidget(
+            labelText: 'Correo electrónico',
+            hintText: 'Ingresa tu correo electrónico',
+            prefixIcon: Icons.alternate_email,
+            keyboardType: TextInputType.emailAddress,
+            focusNodeNext: _focusPasswordNode,
+            validator: emailValidator,
+          ),
+          InputCustomWidget(
+            labelText: 'Contraseña',
+            hintText: 'Ingresa tu contraseña',
+            prefixIcon: Icons.lock,
+            focusNode: _focusPasswordNode,
+            obscureText: true,
+            validator: passwordValidator,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextLinkWidget(
+              text: 'Olvidaste tu contraseña?',
+              onPressed: () {
+                _onShowModalBottomSheet(context);
+              },
+            ),
+          ),
+          const SizedBox(height: maxSpacing + minSpacing),
+          ButtonAppWidget(
+            text: 'Ingresar',
+            icon: Icons.arrow_forward_ios,
+            fullWidth: true,
+            onPressed: onAuth,
+          ),
+          const SizedBox(height: minSpacing),
+          ButtonAppWidget(
+            text: 'Crear cuenta',
+            fullWidth: true,
+            styleType: ButtonStyleType.clear,
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onAuth() {
+    if (_formKey.currentState == null) return;
+
+    final status = _formKey.currentState!.validate();
+
+    if (status) {
+      // TODO: Implementar lógica de inicio de sesión
+    }
   }
 
   void _onShowModalBottomSheet(BuildContext context) {
@@ -110,38 +161,6 @@ class SignInView extends StatelessWidget {
           fullWidth: true,
           styleType: ButtonStyleType.clear,
           onPressed: () {},
-        ),
-      ],
-    );
-  }
-}
-
-class _FormSignIn extends StatefulWidget {
-  const _FormSignIn();
-
-  @override
-  State<_FormSignIn> createState() => _FormSignInState();
-}
-
-class _FormSignInState extends State<_FormSignIn> {
-  final focusPasswordNode = FocusNode();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InputCustomWidget(
-          labelText: 'Correo',
-          hintText: 'Ingresa tu correo',
-          prefixIcon: Icons.alternate_email,
-          keyboardType: TextInputType.emailAddress,
-          focusNodeNext: focusPasswordNode,
-        ),
-        InputCustomWidget(
-          labelText: 'Contraseña',
-          hintText: 'Ingresa tu contraseña',
-          prefixIcon: Icons.lock,
-          focusNode: focusPasswordNode,
         ),
       ],
     );
