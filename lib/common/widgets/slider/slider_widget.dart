@@ -174,7 +174,7 @@ class _BulletSlideControl extends StatelessWidget {
       height: active ? 14 : 12,
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: active ? Coolors.accent : Coolors.gray.withOpacity(0.6),
+        color: active ? Coolors.primaryDark : Coolors.gray.withOpacity(0.6),
         shape: BoxShape.circle,
       ),
     );
