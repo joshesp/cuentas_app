@@ -9,40 +9,36 @@ extension ExtendTheme on BuildContext {
 }
 
 class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
-  final Color? primaryColor;
-  final Color? accentColor;
   final Color? backgroundColor;
   final Color? backgroundActiveBullet;
   final Color? textColor;
+  final Color? textSecondary;
   final Color? textGray;
   final Color? textError;
 
   const CustomThemeExtension({
-    this.primaryColor,
-    this.accentColor,
     this.backgroundColor,
     this.backgroundActiveBullet,
     this.textColor,
+    this.textSecondary,
     this.textGray,
     this.textError,
   });
 
   static const lightMode = CustomThemeExtension(
-    primaryColor: Coolors.dark,
-    accentColor: Coolors.accent,
     backgroundColor: Coolors.light,
     backgroundActiveBullet: Coolors.primaryDark,
     textColor: Coolors.dark,
+    textSecondary: Coolors.darker,
     textGray: Coolors.gray,
     textError: Coolors.danger,
   );
 
   static const darkMode = CustomThemeExtension(
-    primaryColor: Coolors.light,
-    accentColor: Coolors.accent,
     backgroundColor: Coolors.darker,
     backgroundActiveBullet: Coolors.primary,
     textColor: Colors.white,
+    textSecondary: Coolors.light,
     textGray: Coolors.grayLight,
     textError: Coolors.dangerLight,
   );
@@ -54,16 +50,16 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     Color? backgroundColor,
     Color? backgroundActiveBullet,
     Color? textColor,
+    Color? textSecondary,
     Color? textGray,
     Color? textError,
   }) {
     return CustomThemeExtension(
-      primaryColor: primaryColor ?? this.primaryColor,
-      accentColor: accentColor ?? this.accentColor,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       backgroundActiveBullet:
           backgroundActiveBullet ?? this.backgroundActiveBullet,
       textColor: textColor ?? this.textColor,
+      textSecondary: textColor ?? this.textSecondary,
       textGray: textGray ?? this.textGray,
       textError: textError ?? this.textError,
     );
@@ -77,8 +73,6 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     }
 
     return CustomThemeExtension(
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      accentColor: Color.lerp(accentColor, other.accentColor, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       backgroundActiveBullet: Color.lerp(
         backgroundActiveBullet,
@@ -86,6 +80,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
         t,
       ),
       textColor: Color.lerp(textColor, other.textColor, t),
+      textSecondary: Color.lerp(textSecondary, other.textSecondary, t),
       textGray: Color.lerp(textGray, other.textGray, t),
       textError: Color.lerp(textError, other.textError, t),
     );

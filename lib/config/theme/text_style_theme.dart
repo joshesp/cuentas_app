@@ -78,7 +78,7 @@ class TextStyleTheme {
   static const buttonSmall = TextStyle(
     fontSize: bodySmallSize,
     fontFamily: fontPrimary,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     letterSpacing: 1.25,
     backgroundColor: Colors.transparent,
     wordSpacing: 1.25,

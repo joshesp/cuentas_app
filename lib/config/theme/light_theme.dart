@@ -82,9 +82,9 @@ ThemeData lightTheme() {
       ),
     ),
     textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Coolors.accent,
-      selectionColor: Coolors.accent,
-      selectionHandleColor: Coolors.accentDark,
+      cursorColor: Coolors.primary,
+      selectionColor: Coolors.primary,
+      selectionHandleColor: Coolors.primary,
     ),
   );
 }
