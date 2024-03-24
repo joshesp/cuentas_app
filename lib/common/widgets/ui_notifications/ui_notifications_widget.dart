@@ -27,7 +27,7 @@ void showModalBottomSheetCustom({
                   icon: Icon(
                     Icons.close,
                     size: 32,
-                    color: context.theme.primaryColor,
+                    color: context.theme.textColor,
                   ),
                 ),
               ),
