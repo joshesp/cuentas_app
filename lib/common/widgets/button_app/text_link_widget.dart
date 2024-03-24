@@ -1,4 +1,3 @@
-import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class TextLinkWidget extends StatelessWidget {
@@ -6,26 +5,24 @@ class TextLinkWidget extends StatelessWidget {
   final String textLink;
   final String prefixText;
   final String sufixText;
-  final bool isBoldTextLink;
-  final Color? colorTextLink;
-  final Color? colorOtherText;
+  final TextAlign? textAlign;
+  final TextStyle? textLinkStyle;
+  final TextStyle? textComplmentStyle;
 
-  const TextLinkWidget({
-    super.key,
-    required this.onPressed,
-    required this.textLink,
-    this.prefixText = '',
-    this.sufixText = '',
-    this.colorTextLink,
-    this.colorOtherText,
-    this.isBoldTextLink = false,
-  });
+  const TextLinkWidget(
+      {super.key,
+      required this.onPressed,
+      required this.textLink,
+      this.prefixText = '',
+      this.sufixText = '',
+      this.textLinkStyle,
+      this.textComplmentStyle,
+      this.textAlign});
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Text.rich(
+      textAlign: textAlign,
       TextSpan(
         text: '$prefixText ',
         children: [
@@ -34,11 +31,7 @@ class TextLinkWidget extends StatelessWidget {
               onTap: onPressed,
               child: Text(
                 textLink,
-                style: textTheme.bodyMedium!.copyWith(
-                  fontWeight:
-                      isBoldTextLink ? FontWeight.w600 : FontWeight.normal,
-                  color: colorTextLink ?? context.theme.textColor,
-                ),
+                style: textLinkStyle,
               ),
             ),
           ),
@@ -47,9 +40,7 @@ class TextLinkWidget extends StatelessWidget {
           ),
         ],
       ),
-      style: textTheme.bodyMedium!.copyWith(
-        color: colorOtherText ?? context.theme.textColor,
-      ),
+      style: textComplmentStyle,
     );
   }
 }
