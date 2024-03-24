@@ -96,6 +96,7 @@ class _SlideContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: maxSpacing),
         Image.asset(slide.image),
