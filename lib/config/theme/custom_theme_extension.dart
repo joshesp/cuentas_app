@@ -34,7 +34,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     backgroundActiveBullet: Coolors.primaryDark,
     textColor: Coolors.dark,
     textGray: Coolors.gray,
-    textError: Coolors.dangerDarker,
+    textError: Coolors.danger,
   );
 
   static const darkMode = CustomThemeExtension(
@@ -44,7 +44,7 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     backgroundActiveBullet: Coolors.primary,
     textColor: Colors.white,
     textGray: Coolors.grayLight,
-    textError: Coolors.danger,
+    textError: Coolors.dangerLight,
   );
 
   @override
