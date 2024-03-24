@@ -64,12 +64,12 @@ class InputCustomWidget extends StatelessWidget {
 
   InputDecoration _decorationInput(BuildContext context) {
     return InputDecoration(
-      focusColor: Coolors.dangerDarker,
+      focusColor: context.theme.textColor,
       prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!, context) : null,
       suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!, context) : null,
       labelText: labelText.toUpperCase(),
       labelStyle: TextStyleTheme.inputLabel.copyWith(
-        color: context.theme.textGray,
+        color: context.theme.textSecondary,
       ),
       errorStyle: TextStyleTheme.inputLabel.copyWith(
         color: context.theme.textError,
@@ -83,22 +83,25 @@ class InputCustomWidget extends StatelessWidget {
       filled: false,
       contentPadding: const EdgeInsets.all(0),
       focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primary, width: 1),
+        borderSide: BorderSide(color: Coolors.primary, width: 0.5),
       ),
-      focusedErrorBorder: const UnderlineInputBorder(
+      focusedErrorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Coolors.dangerDarker,
-          width: 1,
+          color: context.theme.textError!,
+          width: 0.5,
         ),
       ),
-      errorBorder: const UnderlineInputBorder(
+      errorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: Coolors.dangerDarker,
-          width: 1,
+          color: context.theme.textError!,
+          width: 0.5,
         ),
       ),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: context.theme.textGray!, width: 0.5),
+        borderSide: BorderSide(
+          color: context.theme.textColor!,
+          width: 0.5,
+        ),
       ),
       disabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: Coolors.grayLight, width: 1),
