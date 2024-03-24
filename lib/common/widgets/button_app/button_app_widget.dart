@@ -63,7 +63,7 @@ class ButtonAppWidget extends StatelessWidget {
     const spaceTextIcon = SizedBox(width: 8);
     final iconWidget = Icon(
       icon,
-      size: size == ButtonSize.small ? 14.0 : 18.0,
+      size: size == ButtonSize.small ? 16.0 : 22.0,
     );
     final textSize = TextStyle(
       fontSize: size == ButtonSize.small ? 12.0 : 16.0,
