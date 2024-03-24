@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cuentas_app/common/widgets/input_custom/input_custom_widget_widget.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
+import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,6 +19,19 @@ class SignInView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final sizeScreen = MediaQuery.of(context).size;
+
+    const lineSeparator = Expanded(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Coolors.grayLight,
+              width: 1,
+            ),
+          ),
+        ),
+      ),
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -43,15 +58,29 @@ class SignInView extends StatelessWidget {
                       animatedTexts: [
                         TyperAnimatedText(
                           '¡Bienvenido!',
-                          speed: const Duration(milliseconds: 100),
+                          speed: const Duration(milliseconds: 110),
                         ),
                       ],
                       isRepeatingAnimation: false,
                     ),
                   ),
-                  const SizedBox(height: maxSpacing),
                   const Spacer(),
                   const _FormSignIn(),
+                  const SizedBox(height: defaultSpacing),
+                  Row(
+                    children: [
+                      lineSeparator,
+                      const SizedBox(width: 8),
+                      Text(
+                        'O puedes acceder con',
+                        style: textTheme.bodyMedium!.copyWith(
+                          color: context.theme.textGray,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      lineSeparator,
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -107,24 +136,19 @@ class _FormSignInState extends State<_FormSignIn> {
             alignment: Alignment.centerRight,
             child: TextLinkWidget(
               textLink: 'Olvidaste tu contraseña?',
+              isBoldTextLink: true,
+              colorTextLink: context.theme.textGray,
               onPressed: () {
                 _onShowModalBottomSheet(context);
               },
             ),
           ),
-          const SizedBox(height: maxSpacing + minSpacing),
+          const SizedBox(height: maxSpacing),
           ButtonAppWidget(
             text: 'Ingresar',
             icon: Icons.arrow_forward_ios,
             fullWidth: true,
             onPressed: onAuth,
-          ),
-          const SizedBox(height: minSpacing),
-          ButtonAppWidget(
-            text: 'Crear cuenta',
-            fullWidth: true,
-            styleType: ButtonStyleType.clear,
-            onPressed: () {},
           ),
         ],
       ),
