@@ -31,7 +31,7 @@ class SplashscreenView extends StatelessWidget {
 
   void redirectTo(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 2500), () {
-      context.go('/intro');
+      context.replace('/intro');
     });
   }
 }
