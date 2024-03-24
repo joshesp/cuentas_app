@@ -103,11 +103,10 @@ class _FormSignInState extends State<_FormSignIn> {
             obscureText: true,
             validator: passwordValidator,
           ),
-          const SizedBox(height: 4),
           Align(
             alignment: Alignment.centerRight,
             child: TextLinkWidget(
-              text: 'Olvidaste tu contraseña?',
+              textLink: 'Olvidaste tu contraseña?',
               onPressed: () {
                 _onShowModalBottomSheet(context);
               },

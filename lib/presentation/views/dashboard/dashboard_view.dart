@@ -59,7 +59,7 @@ class DashboardView extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     TextLinkWidget(
-                      text: 'Ver todas',
+                      textLink: 'Ver todas',
                       onPressed: () {},
                     )
                   ],
