@@ -6,7 +6,7 @@ String? emailValidator(String? value) {
   if (value == null || value.isEmpty) {
     return 'Ingresa un correo electrónico';
   } else if (!regExp.hasMatch(value)) {
-    return 'EL correo electrónico no es válido';
+    return 'El correo electrónico no es válido';
   } else {
     return null;
   }
