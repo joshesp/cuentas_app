@@ -161,11 +161,11 @@ class _FormSignInState extends State<_FormSignIn> {
             style: textTheme.bodyLarge,
           ),
           const SizedBox(height: maxSpacing),
-          // const InputCustomWidget(
-          //   labelText: 'Correo',
-          //   hintText: 'Ingresa tu correo',
-          //   prefixIcon: Icons.alternate_email,
-          // ),
+          const InputCustomWidget(
+            labelText: 'Correo',
+            hintText: 'Ingresa tu correo',
+            prefixIcon: Icons.alternate_email,
+          ),
         ],
       ),
       buttonActions: [
