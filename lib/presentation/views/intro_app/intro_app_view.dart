@@ -1,7 +1,6 @@
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/constants/texts_constants.dart';
-// import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

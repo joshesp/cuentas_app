@@ -93,9 +93,6 @@ class SignInView extends StatelessWidget {
           ButtonSocialWidget(
             type: TypeButtonSocial.google,
           ),
-          ButtonSocialWidget(
-            type: TypeButtonSocial.facebook,
-          ),
         ],
       );
 

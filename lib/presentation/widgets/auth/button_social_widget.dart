@@ -4,15 +4,11 @@ import 'package:flutter_svg/svg.dart';
 
 enum TypeButtonSocial {
   google(
-    icon: 'assets/icons/google-logo.svg',
+    icon: 'assets/icons/google-icon.svg',
     defaultSpace: 10,
   ),
-  facebook(
-    icon: 'assets/icons/facebook-logo.svg',
-    defaultSpace: 7,
-  ),
   apple(
-    icon: 'assets/icons/apple-logo.svg',
+    icon: 'assets/icons/apple-icon.svg',
     defaultSpace: 10,
   );
 
