@@ -1,13 +1,12 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:cuentas_app/common/widgets/input_custom/input_custom_widget_widget.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
 import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
-import 'package:cuentas_app/config/theme/text_style_theme.dart';
+import 'package:cuentas_app/presentation/widgets/auth/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../common/utils/index.dart';
 import '../../../../common/widgets/widgets.dart';
 
 class SignInView extends StatelessWidget {
@@ -19,19 +18,6 @@ class SignInView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final sizeScreen = MediaQuery.of(context).size;
-
-    const lineSeparator = Expanded(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Coolors.grayLight,
-              width: 1,
-            ),
-          ),
-        ),
-      ),
-    );
 
     return Scaffold(
       body: SafeArea(
@@ -50,7 +36,9 @@ class SignInView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Spacer(),
-                  SvgPicture.asset('assets/images/cuentas_app_iso.svg'),
+                  SvgPicture.asset(
+                    'assets/images/cuentas_app_iso.svg',
+                  ),
                   const SizedBox(height: minSpacing),
                   DefaultTextStyle(
                     style: textTheme.titleLarge!,
@@ -65,22 +53,13 @@ class SignInView extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  const _FormSignIn(),
-                  const SizedBox(height: defaultSpacing),
-                  Row(
-                    children: [
-                      lineSeparator,
-                      const SizedBox(width: 8),
-                      Text(
-                        'O puedes acceder con',
-                        style: textTheme.bodyMedium!.copyWith(
-                          color: context.theme.textGray,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      lineSeparator,
-                    ],
-                  ),
+                  const FormSignInWidget(),
+                  const SizedBox(height: maxSpacing),
+                  _textOtherOptionSignInWidget(textTheme, context),
+                  const SizedBox(height: maxSpacing),
+                  _optionsSocialSignInWidget,
+                  const Spacer(),
+                  _createAccountWidget(context, textTheme)
                 ],
               ),
             ),
@@ -89,121 +68,77 @@ class SignInView extends StatelessWidget {
       ),
     );
   }
-}
 
-class _FormSignIn extends StatefulWidget {
-  const _FormSignIn();
-
-  @override
-  State<_FormSignIn> createState() => _FormSignInState();
-}
-
-class _FormSignInState extends State<_FormSignIn> {
-  final _focusPasswordNode = FocusNode();
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    _focusPasswordNode.dispose();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          InputCustomWidget(
-            labelText: 'Correo electrónico',
-            hintText: 'Ingresa tu correo electrónico',
-            prefixIcon: Icons.alternate_email,
-            keyboardType: TextInputType.emailAddress,
-            focusNodeNext: _focusPasswordNode,
-            validator: emailValidator,
-          ),
-          const SizedBox(height: 8),
-          InputCustomWidget(
-            labelText: 'Contraseña',
-            hintText: 'Ingresa tu contraseña',
-            prefixIcon: Icons.lock,
-            focusNode: _focusPasswordNode,
-            obscureText: true,
-            validator: passwordValidator,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextLinkWidget(
-              textLink: 'Olvidaste tu contraseña?',
-              isBoldTextLink: true,
-              colorTextLink: context.theme.textGray,
-              onPressed: () {
-                _onShowModalBottomSheet(context);
-              },
+  Widget get _lineWidget => const SizedBox(
+        width: 32,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Coolors.grayLight,
+                width: 1.5,
+              ),
             ),
           ),
-          const SizedBox(height: maxSpacing),
-          ButtonAppWidget(
-            text: 'Ingresar',
-            icon: Icons.arrow_forward_ios,
-            fullWidth: true,
-            onPressed: onAuth,
+        ),
+      );
+
+  Widget get _optionsSocialSignInWidget => const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ButtonSocialWidget(
+            type: TypeButtonSocial.apple,
+          ),
+          ButtonSocialWidget(
+            type: TypeButtonSocial.google,
+          ),
+          ButtonSocialWidget(
+            type: TypeButtonSocial.facebook,
           ),
         ],
-      ),
+      );
+
+  Widget _textOtherOptionSignInWidget(
+      TextTheme textTheme, BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _lineWidget,
+        const SizedBox(width: 8),
+        Text(
+          'O',
+          style: textTheme.bodyLarge!.copyWith(
+            color: context.theme.textGray,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(width: 8),
+        _lineWidget,
+      ],
     );
   }
 
-  void onAuth() {
-    if (_formKey.currentState == null) return;
-
-    final status = _formKey.currentState!.validate();
-
-    if (status) {
-      // TODO: Implementar lógica de inicio de sesión
-    }
-  }
-
-  void _onShowModalBottomSheet(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    showModalBottomSheetCustom(
-      context: context,
-      contentWidgets: Column(
-        children: [
-          Text(
-            'Recuperar contraseña',
-            style: TextStyleTheme.subtitle.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: minSpacing),
-          Text(
-            'Ingresa tu correo y te enviaremos un link para que puedas restaurar tu contraseña.',
-            style: textTheme.bodyLarge,
-          ),
-          const SizedBox(height: maxSpacing),
-          const InputCustomWidget(
-            labelText: 'Correo',
-            hintText: 'Ingresa tu correo',
-            prefixIcon: Icons.alternate_email,
-          ),
-        ],
+  Widget _createAccountWidget(BuildContext context, TextTheme textTheme) {
+    return Align(
+      alignment: Alignment.center,
+      child: TextLinkWidget(
+        onPressed: () {
+          context.go('/auth/register');
+        },
+        textLink: 'Crear cuenta',
+        prefixText: '¿Aún no tienes una cuenta?\n',
+        textLinkStyle: textTheme.bodyLarge!.copyWith(
+          color: context.theme.backgroundActiveBullet,
+          fontWeight: FontWeight.w600,
+        ),
+        textComplmentStyle: textTheme.bodyLarge!.copyWith(
+          color: context.theme.textSecondary,
+          fontWeight: FontWeight.w600,
+        ),
+        textAlign: TextAlign.center,
       ),
-      buttonActions: [
-        ButtonAppWidget(
-          text: 'Recuperar contraseña',
-          fullWidth: true,
-          onPressed: () {},
-        ),
-        ButtonAppWidget(
-          text: 'Cancelar',
-          fullWidth: true,
-          styleType: ButtonStyleType.clear,
-          onPressed: () {},
-        ),
-      ],
     );
   }
 }
