@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cuentas_app/common/widgets/input_custom/input_custom_widget_widget.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/text_style_theme.dart';
@@ -36,9 +37,17 @@ class SignInView extends StatelessWidget {
                   const Spacer(),
                   SvgPicture.asset('assets/images/cuentas_app_iso.svg'),
                   const SizedBox(height: minSpacing),
-                  Text(
-                    "Hola,\n¡Bienvenido!",
-                    style: textTheme.titleLarge,
+                  DefaultTextStyle(
+                    style: textTheme.titleLarge!,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          '¡Bienvenido!',
+                          speed: const Duration(milliseconds: 100),
+                        ),
+                      ],
+                      isRepeatingAnimation: false,
+                    ),
                   ),
                   const SizedBox(height: maxSpacing),
                   const Spacer(),
@@ -65,6 +74,13 @@ class _FormSignInState extends State<_FormSignIn> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void dispose() {
+    _focusPasswordNode.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -78,6 +94,7 @@ class _FormSignInState extends State<_FormSignIn> {
             focusNodeNext: _focusPasswordNode,
             validator: emailValidator,
           ),
+          const SizedBox(height: 8),
           InputCustomWidget(
             labelText: 'Contraseña',
             hintText: 'Ingresa tu contraseña',
@@ -86,6 +103,7 @@ class _FormSignInState extends State<_FormSignIn> {
             obscureText: true,
             validator: passwordValidator,
           ),
+          const SizedBox(height: 4),
           Align(
             alignment: Alignment.centerRight,
             child: TextLinkWidget(
@@ -143,11 +161,11 @@ class _FormSignInState extends State<_FormSignIn> {
             style: textTheme.bodyLarge,
           ),
           const SizedBox(height: maxSpacing),
-          const InputCustomWidget(
-            labelText: 'Correo',
-            hintText: 'Ingresa tu correo',
-            prefixIcon: Icons.alternate_email,
-          ),
+          // const InputCustomWidget(
+          //   labelText: 'Correo',
+          //   hintText: 'Ingresa tu correo',
+          //   prefixIcon: Icons.alternate_email,
+          // ),
         ],
       ),
       buttonActions: [

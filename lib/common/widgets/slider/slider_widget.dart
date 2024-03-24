@@ -2,6 +2,7 @@ import 'package:cuentas_app/common/utils/fade_animation_util.dart';
 import 'package:cuentas_app/common/widgets/widgets.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
 import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class SliderWidget extends StatefulWidget {
@@ -174,7 +175,9 @@ class _BulletSlideControl extends StatelessWidget {
       height: active ? 14 : 12,
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: active ? Coolors.primaryDark : Coolors.gray.withOpacity(0.6),
+        color: active
+            ? context.theme.backgroundActiveBullet
+            : Coolors.gray.withOpacity(0.6),
         shape: BoxShape.circle,
       ),
     );

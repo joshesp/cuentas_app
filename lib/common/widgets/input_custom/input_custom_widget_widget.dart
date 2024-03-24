@@ -64,9 +64,9 @@ class InputCustomWidget extends StatelessWidget {
 
   InputDecoration _decorationInput(BuildContext context) {
     return InputDecoration(
-      focusColor: Coolors.accent,
-      prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!) : null,
-      suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!) : null,
+      focusColor: Coolors.dangerDarker,
+      prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!, context) : null,
+      suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!, context) : null,
       labelText: labelText.toUpperCase(),
       labelStyle: TextStyleTheme.inputLabel.copyWith(
         color: context.theme.textGray,
@@ -82,11 +82,8 @@ class InputCustomWidget extends StatelessWidget {
       helperStyle: TextStyleTheme.bodySmall,
       filled: false,
       contentPadding: const EdgeInsets.all(0),
-      border: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primary, width: 1),
-      ),
       focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primaryDark, width: 1),
+        borderSide: BorderSide(color: Coolors.primary, width: 1),
       ),
       focusedErrorBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
@@ -100,8 +97,8 @@ class InputCustomWidget extends StatelessWidget {
           width: 1,
         ),
       ),
-      enabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primary, width: 1),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: context.theme.textGray!, width: 0.5),
       ),
       disabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: Coolors.grayLight, width: 1),
@@ -109,10 +106,10 @@ class InputCustomWidget extends StatelessWidget {
     );
   }
 
-  Icon _iconInput(IconData icon) {
+  Icon _iconInput(IconData icon, BuildContext context) {
     return Icon(
       icon,
-      color: Coolors.primaryDark,
+      color: context.theme.textGray,
       size: 22,
     );
   }
