@@ -143,7 +143,7 @@ class LineChartWidgetState extends State<LineChartWidget> {
         show: true,
         border: Border(
           bottom: BorderSide(
-            color: Coolors.grayLight.withOpacity(0.2),
+            color: Coolors.gray.withOpacity(0.2),
             width: 2,
           ),
           left: const BorderSide(color: Colors.transparent),

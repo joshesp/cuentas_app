@@ -75,7 +75,7 @@ class SignInView extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: Coolors.grayLight,
+                color: Coolors.gray,
                 width: 1.5,
               ),
             ),

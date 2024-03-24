@@ -104,7 +104,7 @@ class InputCustomWidget extends StatelessWidget {
         ),
       ),
       disabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.grayLight, width: 1),
+        borderSide: BorderSide(color: Coolors.gray, width: 1),
       ),
     );
   }

@@ -38,7 +38,7 @@ ThemeData darkTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: Coolors.primary,
         foregroundColor: Coolors.dark,
-        disabledBackgroundColor: Coolors.grayLight,
+        disabledBackgroundColor: Coolors.gray,
         disabledForegroundColor: Coolors.gray,
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -55,7 +55,7 @@ ThemeData darkTheme() {
         foregroundColor: Coolors.light,
         backgroundColor: Coolors.dark,
         disabledForegroundColor: Coolors.gray,
-        disabledBackgroundColor: Coolors.grayLight,
+        disabledBackgroundColor: Coolors.gray,
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         shape: const RoundedRectangleBorder(
@@ -71,10 +71,10 @@ ThemeData darkTheme() {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Coolors.light,
-        disabledForegroundColor: Coolors.grayLight,
+        disabledForegroundColor: Coolors.gray,
         disabledBackgroundColor: Colors.transparent,
         iconColor: Coolors.light,
-        disabledIconColor: Coolors.grayLight,
+        disabledIconColor: Coolors.gray,
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         shape: const RoundedRectangleBorder(

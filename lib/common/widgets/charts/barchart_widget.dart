@@ -83,7 +83,7 @@ class BarChartWidgetState extends State<BarChartWidget> {
       barRods: [
         BarChartRodData(
           toY: y1,
-          color: Coolors.primaryDark,
+          color: Coolors.primary,
           width: width,
         ),
         BarChartRodData(

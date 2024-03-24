@@ -38,7 +38,7 @@ class ButtonSocialWidget extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
         border: Border.fromBorderSide(
           BorderSide(
-            color: Coolors.grayLight,
+            color: Coolors.gray,
             width: 1.5,
           ),
         ),

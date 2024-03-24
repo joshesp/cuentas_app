@@ -23,7 +23,7 @@ class TypeTransactionIcon extends StatelessWidget {
         color: whiteBg
             ? Colors.white
             : isExpense
-                ? Coolors.dangerLight
+                ? Coolors.danger
                 : Coolors.primary,
       ),
       child: Padding(

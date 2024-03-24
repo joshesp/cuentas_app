@@ -31,7 +31,7 @@ class ItemTrasactionWidget extends StatelessWidget {
       height: 54,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: isExpense ? Coolors.dangerLight : Coolors.primary,
+        color: isExpense ? Coolors.danger : Coolors.primary,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

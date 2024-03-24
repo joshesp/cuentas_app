@@ -51,7 +51,7 @@ class TotalTransactionItemWidget extends StatelessWidget {
         border: clear
             ? null
             : Border.all(
-                color: isExpense ? Coolors.danger : Coolors.primaryDark,
+                color: isExpense ? Coolors.danger : Coolors.primary,
                 width: 1,
               ),
       ),
