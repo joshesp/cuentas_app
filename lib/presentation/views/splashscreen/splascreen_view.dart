@@ -11,16 +11,14 @@ class SplashscreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     redirectTo(context);
 
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Center(
           child: SizedBox(
             width: 160,
             height: 120,
             child: RiveAnimation.asset(
-              Theme.of(context).brightness != Brightness.dark
-                  ? 'assets/animations/logo_splash_intro_dark.riv'
-                  : 'assets/animations/logo_splash_intro_light.riv',
+              'assets/animations/logo_splash_intro.riv',
               fit: BoxFit.contain,
             ),
           ),
@@ -30,7 +28,7 @@ class SplashscreenView extends StatelessWidget {
   }
 
   void redirectTo(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 2500), () {
+    Future.delayed(const Duration(milliseconds: 2700), () {
       context.replace('/intro');
     });
   }
