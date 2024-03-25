@@ -37,7 +37,7 @@ class SignInView extends StatelessWidget {
                 children: [
                   const Spacer(),
                   SvgPicture.asset(
-                    'assets/images/cuentas_app_iso.svg',
+                    'assets/images/cuentas-app-iso.svg',
                   ),
                   const SizedBox(height: minSpacing),
                   DefaultTextStyle(

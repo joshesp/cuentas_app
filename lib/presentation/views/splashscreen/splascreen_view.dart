@@ -13,14 +13,14 @@ class SplashscreenView extends StatelessWidget {
     redirectTo(context);
 
     return const Scaffold(
-      backgroundColor: Coolors.light,
+      backgroundColor: Coolors.dark,
       body: SafeArea(
         child: Center(
           child: SizedBox(
             width: 160,
             height: 120,
             child: RiveAnimation.asset(
-              'assets/animations/logo-animated.riv',
+              'assets/animations/logo-animated-light.riv',
               fit: BoxFit.contain,
             ),
           ),

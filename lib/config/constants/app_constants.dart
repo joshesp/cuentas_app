@@ -1,7 +1,7 @@
 // Colors
 const colorPrimary = 0XFF131051;
 const colorAcent = 0XFFD56E19;
-const colorDark = 0XFF07051E;
+const colorDark = 0XFF040314;
 const colorLight = 0XFFF0F0FF;
 const colorGray = 0XFF5B5B5B;
 const colorDanger = 0XFFDE251C;

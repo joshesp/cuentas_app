@@ -27,19 +27,19 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
 
   static const lightMode = CustomThemeExtension(
     backgroundColor: Coolors.light,
-    backgroundActiveBullet: Coolors.primary,
+    backgroundActiveBullet: Coolors.accent,
     textColor: Coolors.dark,
-    textSecondary: Coolors.dark,
+    textSecondary: Coolors.primary,
     textGray: Coolors.gray,
     textError: Coolors.danger,
   );
 
   static const darkMode = CustomThemeExtension(
     backgroundColor: Coolors.dark,
-    backgroundActiveBullet: Coolors.primary,
+    backgroundActiveBullet: Coolors.accent,
     textColor: Colors.white,
     textSecondary: Coolors.light,
-    textGray: Coolors.gray,
+    textGray: Coolors.light,
     textError: Coolors.danger,
   );
 

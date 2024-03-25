@@ -33,9 +33,9 @@ ThemeData lightTheme() {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Coolors.dark,
+        backgroundColor: Coolors.primary,
         foregroundColor: Colors.white,
-        disabledBackgroundColor: Coolors.gray,
+        disabledBackgroundColor: Coolors.gray.withOpacity(0.7),
         disabledForegroundColor: Coolors.gray,
         textStyle: TextStyleTheme.buttonMedium,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
