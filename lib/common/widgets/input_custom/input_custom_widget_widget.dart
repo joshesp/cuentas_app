@@ -64,26 +64,28 @@ class InputCustomWidget extends StatelessWidget {
 
   InputDecoration _decorationInput(BuildContext context) {
     return InputDecoration(
-      focusColor: context.theme.textColor,
+      focusColor: context.theme.textBase,
       prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!, context) : null,
       suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!, context) : null,
       labelText: labelText.toUpperCase(),
       labelStyle: TextStyleTheme.inputLabel.copyWith(
-        color: context.theme.textSecondary,
+        color: context.theme.textBase,
       ),
       errorStyle: TextStyleTheme.inputLabel.copyWith(
         color: context.theme.textError,
       ),
       hintText: hintText,
       hintMaxLines: 1,
-      hintStyle: TextStyleTheme.bodyHintText,
+      hintStyle: TextStyleTheme.bodyHintText.copyWith(
+        color: context.theme.textBase,
+      ),
       helperText: helperText,
       helperMaxLines: 1,
       helperStyle: TextStyleTheme.bodySmall,
       filled: false,
       contentPadding: const EdgeInsets.all(0),
       focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Coolors.primary, width: 0.5),
+        borderSide: BorderSide(color: Coolors.accent, width: 1),
       ),
       focusedErrorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -99,7 +101,7 @@ class InputCustomWidget extends StatelessWidget {
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: context.theme.textColor!,
+          color: context.theme.textBase!,
           width: 0.5,
         ),
       ),
@@ -112,7 +114,7 @@ class InputCustomWidget extends StatelessWidget {
   Icon _iconInput(IconData icon, BuildContext context) {
     return Icon(
       icon,
-      color: context.theme.textGray,
+      color: context.theme.textBase,
       size: 22,
     );
   }

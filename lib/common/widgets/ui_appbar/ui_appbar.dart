@@ -12,7 +12,7 @@ AppBar headerApp({required BuildContext context, required String title}) {
           Icon(
             Icons.account_circle,
             size: 34,
-            color: context.theme.textColor,
+            color: context.theme.textBase,
           ),
         ],
       ),

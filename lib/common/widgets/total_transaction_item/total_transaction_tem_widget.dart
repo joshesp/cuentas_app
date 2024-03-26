@@ -38,7 +38,7 @@ class TotalTransactionItemWidget extends StatelessWidget {
       child: Text(
         formatter.format(total),
         style: TextStyleTheme.titleSmall.copyWith(
-          color: context.theme.textColor,
+          color: context.theme.textBase,
           fontWeight: FontWeight.w600,
         ),
       ),

@@ -7,7 +7,7 @@ class TextLinkWidget extends StatelessWidget {
   final String sufixText;
   final TextAlign? textAlign;
   final TextStyle? textLinkStyle;
-  final TextStyle? textComplmentStyle;
+  final TextStyle? textComplementStyle;
 
   const TextLinkWidget(
       {super.key,
@@ -16,7 +16,7 @@ class TextLinkWidget extends StatelessWidget {
       this.prefixText = '',
       this.sufixText = '',
       this.textLinkStyle,
-      this.textComplmentStyle,
+      this.textComplementStyle,
       this.textAlign});
 
   @override
@@ -40,7 +40,7 @@ class TextLinkWidget extends StatelessWidget {
           ),
         ],
       ),
-      style: textComplmentStyle,
+      style: textComplementStyle,
     );
   }
 }

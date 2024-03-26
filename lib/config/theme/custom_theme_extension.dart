@@ -10,47 +10,45 @@ extension ExtendTheme on BuildContext {
 
 class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? backgroundColor;
+  final Color? primaryColor;
   final Color? backgroundActiveBullet;
-  final Color? textColor;
-  final Color? textSecondary;
+  final Color? textBase;
   final Color? textGray;
   final Color? textError;
 
   const CustomThemeExtension({
     this.backgroundColor,
+    this.primaryColor,
     this.backgroundActiveBullet,
-    this.textColor,
-    this.textSecondary,
+    this.textBase,
     this.textGray,
     this.textError,
   });
 
   static const lightMode = CustomThemeExtension(
     backgroundColor: Coolors.light,
-    backgroundActiveBullet: Coolors.accent,
-    textColor: Coolors.dark,
-    textSecondary: Coolors.primary,
+    backgroundActiveBullet: Coolors.dark,
+    primaryColor: Coolors.primary,
+    textBase: Coolors.dark,
     textGray: Coolors.gray,
     textError: Coolors.danger,
   );
 
   static const darkMode = CustomThemeExtension(
     backgroundColor: Coolors.dark,
-    backgroundActiveBullet: Coolors.accent,
-    textColor: Colors.white,
-    textSecondary: Coolors.light,
+    backgroundActiveBullet: Colors.white,
+    primaryColor: Coolors.light,
+    textBase: Colors.white,
     textGray: Coolors.light,
     textError: Coolors.danger,
   );
 
   @override
   ThemeExtension<CustomThemeExtension> copyWith({
-    Color? primaryColor,
-    Color? accentColor,
     Color? backgroundColor,
     Color? backgroundActiveBullet,
-    Color? textColor,
-    Color? textSecondary,
+    Color? primaryColor,
+    Color? textBase,
     Color? textGray,
     Color? textError,
   }) {
@@ -58,8 +56,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       backgroundColor: backgroundColor ?? this.backgroundColor,
       backgroundActiveBullet:
           backgroundActiveBullet ?? this.backgroundActiveBullet,
-      textColor: textColor ?? this.textColor,
-      textSecondary: textColor ?? this.textSecondary,
+      primaryColor: primaryColor ?? this.primaryColor,
+      textBase: textBase ?? this.textBase,
       textGray: textGray ?? this.textGray,
       textError: textError ?? this.textError,
     );
@@ -79,8 +77,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
         other.backgroundActiveBullet,
         t,
       ),
-      textColor: Color.lerp(textColor, other.textColor, t),
-      textSecondary: Color.lerp(textSecondary, other.textSecondary, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
+      textBase: Color.lerp(textBase, other.textBase, t),
       textGray: Color.lerp(textGray, other.textGray, t),
       textError: Color.lerp(textError, other.textError, t),
     );

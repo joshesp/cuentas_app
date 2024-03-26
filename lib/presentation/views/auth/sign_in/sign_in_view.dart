@@ -38,6 +38,9 @@ class SignInView extends StatelessWidget {
                   const Spacer(),
                   SvgPicture.asset(
                     'assets/images/cuentas-app-iso.svg',
+                    height: 70,
+                    fit: BoxFit.cover,
+                    color: context.theme.primaryColor,
                   ),
                   const SizedBox(height: minSpacing),
                   DefaultTextStyle(
@@ -54,9 +57,9 @@ class SignInView extends StatelessWidget {
                   ),
                   const Spacer(),
                   const FormSignInWidget(),
-                  const SizedBox(height: maxSpacing),
+                  const SizedBox(height: 24),
                   _textOtherOptionSignInWidget(textTheme, context),
-                  const SizedBox(height: maxSpacing),
+                  const SizedBox(height: 24),
                   _optionsSocialSignInWidget,
                   const Spacer(),
                   _createAccountWidget(context, textTheme)
@@ -93,6 +96,12 @@ class SignInView extends StatelessWidget {
           ButtonSocialWidget(
             type: TypeButtonSocial.google,
           ),
+          ButtonSocialWidget(
+            type: TypeButtonSocial.facebook,
+          ),
+          ButtonSocialWidget(
+            type: TypeButtonSocial.twitter,
+          ),
         ],
       );
 
@@ -127,12 +136,11 @@ class SignInView extends StatelessWidget {
         textLink: 'Crear cuenta',
         prefixText: '¿Aún no tienes una cuenta?\n',
         textLinkStyle: textTheme.bodyLarge!.copyWith(
-          color: context.theme.backgroundActiveBullet,
+          color: Coolors.accent,
           fontWeight: FontWeight.w600,
         ),
-        textComplmentStyle: textTheme.bodyLarge!.copyWith(
-          color: context.theme.textSecondary,
-          fontWeight: FontWeight.w600,
+        textComplementStyle: textTheme.bodyLarge!.copyWith(
+          color: context.theme.textBase,
         ),
         textAlign: TextAlign.center,
       ),

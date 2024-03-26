@@ -8,7 +8,7 @@ ThemeData lightTheme() {
   final ThemeData base = ThemeData.dark();
 
   return base.copyWith(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Coolors.light,
     extensions: [CustomThemeExtension.lightMode],
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
@@ -82,9 +82,9 @@ ThemeData lightTheme() {
       ),
     ),
     textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Coolors.primary,
-      selectionColor: Coolors.primary,
-      selectionHandleColor: Coolors.primary,
+      cursorColor: Coolors.accent,
+      selectionColor: Coolors.accent,
+      selectionHandleColor: Coolors.accent,
     ),
   );
 }

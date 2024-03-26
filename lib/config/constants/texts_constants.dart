@@ -14,7 +14,7 @@ List<SlideModel> sliderIntro = [
   ),
   SlideModel(
     image: "assets/images/slide-1.png",
-    title: "Cálculo de inpuestos",
+    title: "Cálculo de impuestos",
     description: "Obtén el cálculo aproximado de tus impuestos del mes.",
   ),
 ];

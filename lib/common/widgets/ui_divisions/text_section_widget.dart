@@ -35,7 +35,7 @@ class TextSection extends StatelessWidget {
           Text(
             headline1,
             style: themeText.titleLarge!.copyWith(
-              color: context.theme.textColor,
+              color: context.theme.textBase,
               fontSize: healineLarge,
             ),
           ),
@@ -43,7 +43,7 @@ class TextSection extends StatelessWidget {
           Text(
             headline2,
             style: themeText.titleMedium!.copyWith(
-              color: context.theme.textColor,
+              color: context.theme.textBase,
               fontSize: healineMedium,
             ),
           ),

@@ -5,11 +5,19 @@ import 'package:flutter_svg/svg.dart';
 enum TypeButtonSocial {
   google(
     icon: 'assets/icons/google-icon.svg',
-    defaultSpace: 10,
+    defaultSpace: 6,
+  ),
+  facebook(
+    icon: 'assets/icons/facebook-icon.svg',
+    defaultSpace: 4,
   ),
   apple(
     icon: 'assets/icons/apple-icon.svg',
-    defaultSpace: 10,
+    defaultSpace: 6,
+  ),
+  twitter(
+    icon: 'assets/icons/x-icon.svg',
+    defaultSpace: 6,
   );
 
   final String icon;
@@ -26,16 +34,16 @@ class ButtonSocialWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 50,
-      height: 50,
+      width: 44,
+      height: 44,
       padding: EdgeInsets.all(type.defaultSpace),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         border: Border.fromBorderSide(
           BorderSide(
-            color: Coolors.gray,
-            width: 1.5,
+            color: Coolors.gray.withOpacity(0.5),
+            width: 1,
           ),
         ),
       ),

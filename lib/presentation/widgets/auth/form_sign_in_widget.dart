@@ -50,10 +50,9 @@ class _FormSignInState extends State<FormSignInWidget> {
           Align(
             alignment: Alignment.centerRight,
             child: TextLinkWidget(
-              textLink: 'Olvidaste tu contraseña?',
+              textLink: '¿Olvidaste tu contraseña?',
               textLinkStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: context.theme.backgroundActiveBullet,
-                    fontWeight: FontWeight.w600,
                   ),
               onPressed: () {
                 _onShowModalBottomSheet(context);
