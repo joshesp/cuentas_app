@@ -61,9 +61,7 @@ class SignInView extends StatelessWidget {
                   const Spacer(),
                   const FormSignInWidget(),
                   const SizedBox(height: 24),
-                  _textOtherOptionSignInWidget(textTheme, context),
-                  const SizedBox(height: 24),
-                  _optionsSocialSignInWidget,
+                  const AuthBySocialNetworkWidget(),
                   const Spacer(),
                   _createAccountWidget(context, textTheme)
                 ],
@@ -72,60 +70,6 @@ class SignInView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget get _lineWidget => const SizedBox(
-        width: 32,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: Coolors.gray,
-                width: 1.5,
-              ),
-            ),
-          ),
-        ),
-      );
-
-  Widget get _optionsSocialSignInWidget => const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ButtonSocialWidget(
-            type: TypeButtonSocial.apple,
-          ),
-          ButtonSocialWidget(
-            type: TypeButtonSocial.google,
-          ),
-          ButtonSocialWidget(
-            type: TypeButtonSocial.facebook,
-          ),
-          ButtonSocialWidget(
-            type: TypeButtonSocial.twitter,
-          ),
-        ],
-      );
-
-  Widget _textOtherOptionSignInWidget(
-      TextTheme textTheme, BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _lineWidget,
-        const SizedBox(width: 8),
-        Text(
-          'O',
-          style: textTheme.bodyLarge!.copyWith(
-            color: context.theme.textGray,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(width: 8),
-        _lineWidget,
-      ],
     );
   }
 

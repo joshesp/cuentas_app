@@ -1,6 +1,10 @@
 import 'package:cuentas_app/common/widgets/button_app/button_app_widget.dart';
+import 'package:cuentas_app/common/widgets/button_app/text_link_widget.dart';
 import 'package:cuentas_app/common/widgets/input_custom/input_custom_widget_widget.dart';
 import 'package:cuentas_app/config/constants/app_constants.dart';
+import 'package:cuentas_app/config/theme/coolors.dart';
+import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
+import 'package:cuentas_app/presentation/widgets/auth/index.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
@@ -10,8 +14,6 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widthScreen = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear cuenta'),
@@ -44,52 +46,48 @@ class SignUpView extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Checkbox(
                     value: false,
                     onChanged: (value) {},
                   ),
-                  SizedBox(
-                    width: widthScreen * 0.7,
-                    child: Text.rich(
-                      TextSpan(
-                        text: 'He leido y acepto los ',
-                        children: [
-                          TextSpan(
-                            text: 'términos y condiciones',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  decoration: TextDecoration.underline,
-                                ),
-                          ),
-                          const TextSpan(text: ' del uso de la aplicación.')
-                        ],
-                      ),
-                    ),
-                  )
+                  Expanded(
+                    child: _createAccountWidget(
+                        context, Theme.of(context).textTheme),
+                  ),
                 ],
               ),
-              const Spacer(),
+              const SizedBox(height: defaultSpacing),
               ButtonAppWidget(
                 text: 'Crear cuenta',
                 icon: Icons.arrow_forward_ios,
                 fullWidth: true,
                 onPressed: () {},
               ),
-              const SizedBox(height: minSpacing),
-              ButtonAppWidget(
-                text: 'Ya tengo una cuenta',
-                fullWidth: true,
-                styleType: ButtonStyleType.clear,
-                onPressed: () {},
-              ),
+              const SizedBox(height: 24),
+              const AuthBySocialNetworkWidget(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _createAccountWidget(BuildContext context, TextTheme textTheme) {
+    return TextLinkWidget(
+      onPressed: () {},
+      textLink: 'términos y condiciones',
+      textLinkStyle: textTheme.bodySmall!.copyWith(
+        color: Coolors.accent,
+        fontWeight: FontWeight.w700,
+      ),
+      prefixText: 'He leido y acepto los',
+      sufixText: 'del uso de la aplicación.',
+      textComplementStyle: textTheme.bodySmall!.copyWith(
+        color: context.theme.textBase,
+      ),
+      textAlign: TextAlign.left,
     );
   }
 }
