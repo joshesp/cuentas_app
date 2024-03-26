@@ -94,16 +94,18 @@ class _FormSignInState extends State<FormSignInWidget> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: minSpacing),
+          const SizedBox(height: defaultSpacing),
           Text(
             'Ingresa tu correo y te enviaremos un link para que puedas restaurar tu contraseña.',
-            style: textTheme.bodyLarge,
+            style: textTheme.bodyMedium,
           ),
           const SizedBox(height: maxSpacing),
           const InputCustomWidget(
-            labelText: 'Correo',
-            hintText: 'Ingresa tu correo',
+            labelText: 'Correo electrónico',
+            hintText: 'Ingresa tu correo electrónico',
             prefixIcon: Icons.alternate_email,
+            keyboardType: TextInputType.emailAddress,
+            validator: emailValidator,
           ),
         ],
       ),
@@ -117,7 +119,9 @@ class _FormSignInState extends State<FormSignInWidget> {
           text: 'Cancelar',
           fullWidth: true,
           styleType: ButtonStyleType.clear,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ],
     );

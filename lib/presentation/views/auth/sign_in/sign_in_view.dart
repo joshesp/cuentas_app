@@ -40,7 +40,10 @@ class SignInView extends StatelessWidget {
                     'assets/images/cuentas-app-iso.svg',
                     height: 70,
                     fit: BoxFit.cover,
-                    color: context.theme.primaryColor,
+                    colorFilter: ColorFilter.mode(
+                      context.theme.primaryColor!,
+                      BlendMode.srcIn,
+                    ),
                   ),
                   const SizedBox(height: minSpacing),
                   DefaultTextStyle(

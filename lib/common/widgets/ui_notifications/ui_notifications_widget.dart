@@ -7,60 +7,65 @@ void showModalBottomSheetCustom({
   required Widget contentWidgets,
   List<Widget> buttonActions = const [],
 }) {
-  final heightScreen = MediaQuery.of(context).size.height;
-
+  final sizeScreen = MediaQuery.of(context).size;
+  print('::::heightScreen $sizeScreen');
   showModalBottomSheet(
     context: context,
     builder: (context) {
-      return SizedBox(
-        height: heightScreen * 0.60,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.close,
-                    size: 32,
-                    color: context.theme.textBase,
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: sizeScreen.height * 0.2, // Minimum height
+            maxHeight: sizeScreen.height * 0.6, // Maximum height
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: context.theme.textBase,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: maxSpacing),
-              child: contentWidgets,
-            ),
-            if (buttonActions.isNotEmpty) ...[
-              const Spacer(),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: maxSpacing,
-                  vertical: 12,
-                ),
-                child: Column(
-                  children: buttonActions.asMap().entries.map((entry) {
-                    int idx = entry.key;
-                    Widget widget = entry.value;
+                padding: const EdgeInsets.symmetric(horizontal: maxSpacing),
+                child: contentWidgets,
+              ),
+              if (buttonActions.isNotEmpty) ...[
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: maxSpacing,
+                    vertical: 12,
+                  ),
+                  child: Column(
+                    children: buttonActions.asMap().entries.map((entry) {
+                      int idx = entry.key;
+                      Widget widget = entry.value;
 
-                    return idx != buttonActions.length - 1
-                        ? Padding(
-                            padding: const EdgeInsets.only(
-                              bottom: 8.0,
-                            ), // adjust the space as needed
-                            child: widget,
-                          )
-                        : widget;
-                  }).toList(),
-                ),
-              )
+                      return idx != buttonActions.length - 1
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: 8.0,
+                              ), // adjust the space as needed
+                              child: widget,
+                            )
+                          : widget;
+                    }).toList(),
+                  ),
+                )
+              ],
             ],
-          ],
+          ),
         ),
       );
     },
