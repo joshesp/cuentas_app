@@ -30,7 +30,7 @@ class SignInView extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             reverse: true,
             child: Container(
-              height: sizeScreen.height,
+              height: sizeScreen.height - maxSpacing,
               padding: const EdgeInsets.all(maxSpacing),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
