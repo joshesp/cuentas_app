@@ -56,15 +56,24 @@ class FormSignUpWidget extends StatefulWidget {
 }
 
 class _FormSignUpWidgetState extends State<FormSignUpWidget> {
-  final _focusNamesNode = FocusNode();
+  final _formKey = GlobalKey<FormState>();
   final _focusEmailNode = FocusNode();
   final _focusPasswordNode = FocusNode();
   final _focusConfirmPasswordNode = FocusNode();
-  final _formKey = GlobalKey<FormState>();
+
+  final _fullNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  bool _aceptTerms = false;
+  bool _pristineTerms = false;
 
   @override
   void dispose() {
-    _focusNamesNode.dispose();
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+
     _focusEmailNode.dispose();
     _focusPasswordNode.dispose();
     _focusConfirmPasswordNode.dispose();
@@ -82,7 +91,10 @@ class _FormSignUpWidgetState extends State<FormSignUpWidget> {
             labelText: 'Nombre completo',
             hintText: 'Ingresa tu nombre',
             prefixIcon: Icons.person,
-            focusNode: _focusNamesNode,
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+            textCapitalization: TextCapitalization.words,
+            controller: _fullNameController,
             focusNodeNext: _focusEmailNode,
             validator: fullNameValidator,
           ),
@@ -92,6 +104,8 @@ class _FormSignUpWidgetState extends State<FormSignUpWidget> {
             hintText: 'Ingresa tu correo electrónico',
             prefixIcon: Icons.alternate_email,
             keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            controller: _emailController,
             focusNode: _focusEmailNode,
             focusNodeNext: _focusPasswordNode,
             validator: emailValidator,
@@ -101,7 +115,11 @@ class _FormSignUpWidgetState extends State<FormSignUpWidget> {
             labelText: 'Contraseña',
             hintText: 'Ingresa tu contraseña',
             prefixIcon: Icons.lock,
-            obscureText: true,
+            suffixIcon: Icons.visibility,
+            isPassword: true,
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+            controller: _passwordController,
             focusNode: _focusPasswordNode,
             focusNodeNext: _focusConfirmPasswordNode,
             validator: passwordValidator,
@@ -112,24 +130,17 @@ class _FormSignUpWidgetState extends State<FormSignUpWidget> {
             hintText: 'Ingresa tu contraseña',
             prefixIcon: Icons.lock,
             suffixIcon: Icons.visibility,
+            isPassword: true,
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.done,
             focusNode: _focusConfirmPasswordNode,
-            validator: (String? value) => confirmPasswordValidator(value, ''),
+            validator: (String? value) => confirmPasswordValidator(
+              value,
+              _passwordController.text,
+            ),
           ),
           const SizedBox(height: 4),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Checkbox(
-                value: false,
-                onChanged: (value) {},
-              ),
-              Expanded(
-                child:
-                    _createAccountWidget(context, Theme.of(context).textTheme),
-              ),
-            ],
-          ),
+          _checkTermsAndConditions(context),
           const SizedBox(height: 18),
           ButtonAppWidget(
             text: 'Crear cuenta',
@@ -147,9 +158,46 @@ class _FormSignUpWidgetState extends State<FormSignUpWidget> {
 
     final status = _formKey.currentState!.validate();
 
-    if (status) {
-      // TODO: Implementar lógica de inicio de sesión
+    debugPrint('Sign up: _aceptTerms - $_aceptTerms');
+    debugPrint('Sign up: fullName - ${_fullNameController.text}');
+    debugPrint('Sign up: email - ${_emailController.text}');
+    debugPrint('Sign up: password - ${_passwordController.text}');
+    debugPrint('Sign up: status form - $status');
+
+    if (status && _aceptTerms) {
+      // TODO: Implement sign up
+      debugPrint('Create register');
+    } else {
+      setState(() {
+        _pristineTerms = !_aceptTerms;
+      });
     }
+  }
+
+  Widget _checkTermsAndConditions(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Checkbox(
+          value: _aceptTerms,
+          activeColor: context.theme.primaryColor,
+          checkColor: context.theme.backgroundColor,
+          isError: _pristineTerms,
+          onChanged: (value) {
+            setState(() {
+              _pristineTerms = false;
+              _aceptTerms = value!;
+            });
+          },
+        ),
+        Expanded(
+          child: _createAccountWidget(
+            context,
+            Theme.of(context).textTheme,
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _createAccountWidget(BuildContext context, TextTheme textTheme) {

@@ -44,7 +44,7 @@ class _FormSignInState extends State<FormSignInWidget> {
             hintText: 'Ingresa tu contraseña',
             prefixIcon: Icons.lock,
             focusNode: _focusPasswordNode,
-            obscureText: true,
+            isPassword: true,
             validator: passwordValidator,
           ),
           Align(
