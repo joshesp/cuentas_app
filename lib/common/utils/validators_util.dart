@@ -1,3 +1,13 @@
+String? fullNameValidator(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Please enter your full name';
+  } else if (!value.contains(' ')) {
+    return 'Please enter both your first and last name';
+  } else {
+    return null;
+  }
+}
+
 String? emailValidator(String? value) {
   const pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -18,6 +28,18 @@ String? passwordValidator(String? value) {
       lowerCaseValidator(value) ??
       numberValidator(value) ??
       specialCharacterValidator(value);
+}
+
+String? confirmPasswordValidator(String? value, String? password) {
+  if (password == null || password.isEmpty) return null;
+
+  if (value == null || value.isEmpty) {
+    return 'Please confirm your password';
+  } else if (value != password) {
+    return 'Passwords do not match';
+  } else {
+    return null;
+  }
 }
 
 String? lengthValidator(String? value) {

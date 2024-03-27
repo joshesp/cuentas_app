@@ -38,7 +38,7 @@ class _FormSignInState extends State<FormSignInWidget> {
             focusNodeNext: _focusPasswordNode,
             validator: emailValidator,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
           InputCustomWidget(
             labelText: 'Contraseña',
             hintText: 'Ingresa tu contraseña',
@@ -64,14 +64,14 @@ class _FormSignInState extends State<FormSignInWidget> {
             text: 'Ingresar',
             icon: Icons.arrow_forward_ios,
             fullWidth: true,
-            onPressed: onAuth,
+            onPressed: _onSignIn,
           ),
         ],
       ),
     );
   }
 
-  void onAuth() {
+  void _onSignIn() {
     if (_formKey.currentState == null) return;
 
     final status = _formKey.currentState!.validate();

@@ -56,58 +56,100 @@ class FormSignUpWidget extends StatefulWidget {
 }
 
 class _FormSignUpWidgetState extends State<FormSignUpWidget> {
+  final _focusNamesNode = FocusNode();
+  final _focusEmailNode = FocusNode();
+  final _focusPasswordNode = FocusNode();
+  final _focusConfirmPasswordNode = FocusNode();
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _focusNamesNode.dispose();
+    _focusEmailNode.dispose();
+    _focusPasswordNode.dispose();
+    _focusConfirmPasswordNode.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const InputCustomWidget(
-          labelText: 'Nombre',
-          hintText: 'Ingresa tu nombre',
-          prefixIcon: Icons.person,
-        ),
-        const InputCustomWidget(
-          labelText: 'Correo electrónico',
-          hintText: 'Ingresa tu correo electrónico',
-          prefixIcon: Icons.alternate_email,
-          keyboardType: TextInputType.emailAddress,
-          validator: emailValidator,
-        ),
-        const SizedBox(height: 8),
-        const InputCustomWidget(
-          labelText: 'Contraseña',
-          hintText: 'Ingresa tu contraseña',
-          prefixIcon: Icons.lock,
-          obscureText: true,
-          validator: passwordValidator,
-        ),
-        const InputCustomWidget(
-          labelText: 'Confirmar contraseña',
-          hintText: 'Ingresa tu contraseña',
-          prefixIcon: Icons.lock,
-          suffixIcon: Icons.visibility,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Checkbox(
-              value: false,
-              onChanged: (value) {},
-            ),
-            Expanded(
-              child: _createAccountWidget(context, Theme.of(context).textTheme),
-            ),
-          ],
-        ),
-        const SizedBox(height: defaultSpacing),
-        ButtonAppWidget(
-          text: 'Crear cuenta',
-          icon: Icons.arrow_forward_ios,
-          fullWidth: true,
-          onPressed: () {},
-        ),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          InputCustomWidget(
+            labelText: 'Nombre completo',
+            hintText: 'Ingresa tu nombre',
+            prefixIcon: Icons.person,
+            focusNode: _focusNamesNode,
+            focusNodeNext: _focusEmailNode,
+            validator: fullNameValidator,
+          ),
+          const SizedBox(height: 4),
+          InputCustomWidget(
+            labelText: 'Correo electrónico',
+            hintText: 'Ingresa tu correo electrónico',
+            prefixIcon: Icons.alternate_email,
+            keyboardType: TextInputType.emailAddress,
+            focusNode: _focusEmailNode,
+            focusNodeNext: _focusPasswordNode,
+            validator: emailValidator,
+          ),
+          const SizedBox(height: 4),
+          InputCustomWidget(
+            labelText: 'Contraseña',
+            hintText: 'Ingresa tu contraseña',
+            prefixIcon: Icons.lock,
+            obscureText: true,
+            focusNode: _focusPasswordNode,
+            focusNodeNext: _focusConfirmPasswordNode,
+            validator: passwordValidator,
+          ),
+          const SizedBox(height: 4),
+          InputCustomWidget(
+            labelText: 'Confirmar contraseña',
+            hintText: 'Ingresa tu contraseña',
+            prefixIcon: Icons.lock,
+            suffixIcon: Icons.visibility,
+            focusNode: _focusConfirmPasswordNode,
+            validator: (String? value) => confirmPasswordValidator(value, ''),
+          ),
+          const SizedBox(height: 4),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Checkbox(
+                value: false,
+                onChanged: (value) {},
+              ),
+              Expanded(
+                child:
+                    _createAccountWidget(context, Theme.of(context).textTheme),
+              ),
+            ],
+          ),
+          const SizedBox(height: 18),
+          ButtonAppWidget(
+            text: 'Crear cuenta',
+            icon: Icons.arrow_forward_ios,
+            fullWidth: true,
+            onPressed: _onSignUp,
+          ),
+        ],
+      ),
     );
+  }
+
+  void _onSignUp() {
+    if (_formKey.currentState == null) return;
+
+    final status = _formKey.currentState!.validate();
+
+    if (status) {
+      // TODO: Implementar lógica de inicio de sesión
+    }
   }
 
   Widget _createAccountWidget(BuildContext context, TextTheme textTheme) {

@@ -8,7 +8,7 @@ void showModalBottomSheetCustom({
   List<Widget> buttonActions = const [],
 }) {
   final sizeScreen = MediaQuery.of(context).size;
-  print('::::heightScreen $sizeScreen');
+
   showModalBottomSheet(
     context: context,
     builder: (context) {
