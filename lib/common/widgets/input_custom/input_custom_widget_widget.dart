@@ -3,7 +3,7 @@ import 'package:cuentas_app/config/theme/custom_theme_extension.dart';
 import 'package:cuentas_app/config/theme/text_style_theme.dart';
 import 'package:flutter/material.dart';
 
-class InputCustomWidget extends StatelessWidget {
+class InputCustomWidget extends StatefulWidget {
   final String labelText;
   final String hintText;
   final String helperText;
@@ -15,8 +15,9 @@ class InputCustomWidget extends StatelessWidget {
   final FocusNode? focusNodeNext;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
   final ValueChanged<String>? onChanged;
-  final bool obscureText;
+  final bool isPassword;
   final bool readOnly;
   final AutovalidateMode autovalidateMode;
 
@@ -25,7 +26,7 @@ class InputCustomWidget extends StatelessWidget {
     required this.labelText,
     required this.hintText,
     this.helperText = '',
-    this.obscureText = false,
+    this.isPassword = false,
     this.readOnly = false,
     this.prefixIcon,
     this.suffixIcon,
@@ -37,26 +38,42 @@ class InputCustomWidget extends StatelessWidget {
     this.textInputAction,
     this.onChanged,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.textCapitalization = TextCapitalization.none,
   });
+
+  @override
+  State<InputCustomWidget> createState() => _InputCustomWidgetState();
+}
+
+class _InputCustomWidgetState extends State<InputCustomWidget> {
+  bool _obscureText = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _obscureText = widget.isPassword;
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      readOnly: readOnly,
-      controller: controller,
-      validator: validator,
-      autovalidateMode: autovalidateMode,
-      focusNode: focusNode,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      onChanged: onChanged,
+      readOnly: widget.readOnly,
+      controller: widget.controller,
+      validator: widget.validator,
+      autovalidateMode: widget.autovalidateMode,
+      textCapitalization: widget.textCapitalization,
+      focusNode: widget.focusNode,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      onChanged: widget.onChanged,
       onFieldSubmitted: (_) {
-        if (focusNodeNext != null) {
-          FocusScope.of(context).requestFocus(focusNodeNext);
+        if (widget.focusNodeNext != null) {
+          FocusScope.of(context).requestFocus(widget.focusNodeNext);
         }
       },
       inputFormatters: const [],
-      obscureText: obscureText,
+      obscureText: _obscureText,
       style: TextStyleTheme.bodyHintText,
       decoration: _decorationInput(context),
     );
@@ -65,21 +82,25 @@ class InputCustomWidget extends StatelessWidget {
   InputDecoration _decorationInput(BuildContext context) {
     return InputDecoration(
       focusColor: context.theme.textBase,
-      prefixIcon: prefixIcon != null ? _iconInput(prefixIcon!, context) : null,
-      suffixIcon: suffixIcon != null ? _iconInput(suffixIcon!, context) : null,
-      labelText: labelText.toUpperCase(),
+      prefixIcon: widget.prefixIcon != null
+          ? _iconInput(widget.prefixIcon!, context)
+          : null,
+      suffixIcon: widget.suffixIcon != null
+          ? _iconInput(widget.suffixIcon!, context, true)
+          : null,
+      labelText: widget.labelText.toUpperCase(),
       labelStyle: TextStyleTheme.inputLabel.copyWith(
         color: context.theme.textBase,
       ),
       errorStyle: TextStyleTheme.inputLabel.copyWith(
         color: context.theme.textError,
       ),
-      hintText: hintText,
+      hintText: widget.hintText,
       hintMaxLines: 1,
       hintStyle: TextStyleTheme.bodyHintText.copyWith(
         color: context.theme.textBase,
       ),
-      helperText: helperText,
+      helperText: widget.helperText,
       helperMaxLines: 1,
       helperStyle: TextStyleTheme.bodySmall,
       filled: false,
@@ -111,11 +132,25 @@ class InputCustomWidget extends StatelessWidget {
     );
   }
 
-  Icon _iconInput(IconData icon, BuildContext context) {
-    return Icon(
-      icon,
-      color: context.theme.textBase,
-      size: 22,
+  Widget _iconInput(
+    IconData icon,
+    BuildContext context, [
+    isSufixIcon = false,
+  ]) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: context.theme.textBase,
+        size: 22,
+      ),
+      onPressed:
+          isSufixIcon && widget.isPassword ? _togglePasswordVisibility : null,
     );
+  }
+
+  _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 }
