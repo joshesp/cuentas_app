@@ -34,9 +34,9 @@ String? confirmPasswordValidator(String? value, String? password) {
   if (password == null || password.isEmpty) return null;
 
   if (value == null || value.isEmpty) {
-    return 'Please confirm your password';
+    return 'Confirma tu contraseña';
   } else if (value != password) {
-    return 'Passwords do not match';
+    return 'La contraseña no coincide';
   } else {
     return null;
   }
