@@ -20,7 +20,6 @@ class SignUpView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear cuenta'),
-        backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
         child: GestureDetector(

@@ -12,7 +12,7 @@ ThemeData lightTheme() {
     extensions: [CustomThemeExtension.lightMode],
     appBarTheme: AppBarTheme(
       surfaceTintColor: Colors.transparent,
-      color: Colors.white,
+      color: Coolors.light,
       centerTitle: false,
       elevation: 0,
       iconTheme: const IconThemeData(
