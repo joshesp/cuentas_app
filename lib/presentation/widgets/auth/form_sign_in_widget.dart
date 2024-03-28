@@ -14,12 +14,17 @@ class FormSignInWidget extends StatefulWidget {
 }
 
 class _FormSignInState extends State<FormSignInWidget> {
-  final _focusPasswordNode = FocusNode();
   final _formKey = GlobalKey<FormState>();
+  final _focusPasswordNode = FocusNode();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
     _focusPasswordNode.dispose();
+
+    _emailController.dispose();
+    _passwordController.dispose();
 
     super.dispose();
   }
@@ -35,6 +40,7 @@ class _FormSignInState extends State<FormSignInWidget> {
             hintText: 'Ingresa tu correo electrónico',
             prefixIcon: Icons.alternate_email,
             keyboardType: TextInputType.emailAddress,
+            controller: _emailController,
             focusNodeNext: _focusPasswordNode,
             validator: emailValidator,
           ),
@@ -43,6 +49,7 @@ class _FormSignInState extends State<FormSignInWidget> {
             labelText: 'Contraseña',
             hintText: 'Ingresa tu contraseña',
             prefixIcon: Icons.lock,
+            controller: _passwordController,
             focusNode: _focusPasswordNode,
             isPassword: true,
             validator: passwordValidator,
@@ -76,8 +83,13 @@ class _FormSignInState extends State<FormSignInWidget> {
 
     final status = _formKey.currentState!.validate();
 
+    debugPrint('Sign up: email - ${_emailController.text}');
+    debugPrint('Sign up: password - ${_passwordController.text}');
+    debugPrint('Sign up: status form - $status');
+
     if (status) {
       // TODO: Implementar lógica de inicio de sesión
+      debugPrint('Login user');
     }
   }
 
